@@ -2,15 +2,61 @@
  * @file src/components/CodeBlock.tsx
  * @description コードを表示するコンポーネント。ファイル名をタイトルとしてつけられます
  */
-import { useState } from "react";
+import { useState, useEffect } from "react";
+//highlight.jsの場合
+// import hljs from 'highlight.js';
+// import 'highlight.js/styles/atom-one-dark.css';
+
+// import javascript from 'highlight.js/lib/languages/javascript';
+// import typescript from 'highlight.js/lib/languages/typescript';
+// import sql from 'highlight.js/lib/languages/sql';
+// import csharp from 'highlight.js/lib/languages/csharp';
+// import python from 'highlight.js/lib/languages/python';
+// import bash from 'highlight.js/lib/languages/bash';
+// import json from 'highlight.js/lib/languages/json';
+// import markdown from 'highlight.js/lib/languages/markdown';
+
+// // 言語を登録
+// hljs.registerLanguage('javascript', javascript);
+// hljs.registerLanguage('typescript', typescript);
+// hljs.registerLanguage('sql', sql);
+// hljs.registerLanguage('csharp', csharp);
+// hljs.registerLanguage('python', python);
+// hljs.registerLanguage('bash', bash);
+// hljs.registerLanguage('json', json);
+// hljs.registerLanguage('markdown', markdown);
+
+//Primsの場合
+import 'prismjs/themes/prism-okaidia.css';
+
+import Prism from 'prismjs';
+import 'prismjs/components/prism-sql';
+import 'prismjs/components/prism-javascript';
+import 'prismjs/components/prism-typescript';
+import 'prismjs/components/prism-csharp';
+import 'prismjs/components/prism-python';
+import 'prismjs/components/prism-bash';
+import 'prismjs/components/prism-json';
+import 'prismjs/components/prism-markdown';
+
 
 type Props = {
   title: string;
   code: string;
+  lang: string | null;
 };
 
-export const CodeBlock = ({ title, code }: Props) => {
+export const CodeBlock = ({ title, code, lang }: Props) => {
   const [copied, setCopied] = useState(false);
+  // const codeRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    // codeやlanguageが変更されたらハイライトを再実行
+    // if(codeRef.current){
+    //   hljs.highlightElement(codeRef.current);
+    // }
+    Prism.highlightAll();
+  }, [code, lang]);
 
   const handleCopy = () => {
     if (!code) return;
@@ -37,8 +83,9 @@ export const CodeBlock = ({ title, code }: Props) => {
             {copied ? "Copied!" : "Copy"}
           </button>
       </div>
-      <pre className="p-4 text-sm whitespace-pre-wrap break-all overflow-x-auto">
-        <code>{code || "// Enter table and column information to generate code."}</code>
+      <pre className="bg-gray-800 p-4 text-sm whitespace-pre-wrap break-all overflow-x-auto">
+        {/* <code ref={codeRef} className={lang ? `language-${lang}` : ''}>{code || "// Enter table and column information to generate code."}</code> */}
+        <code className={lang ? `language-${lang}` : ''}>{code || "// Enter table and column information to generate code."}</code>
       </pre>
     </div>
   );

@@ -57,10 +57,10 @@ export const InputSelect: React.FC<InputSelectProps> = ({ options, value, onChan
         onChange={handleInputChange}
         onFocus={() => setIsFocused(true)}
         placeholder={placeholder}
-        className="w-full h-[39px] px-3 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400"
+        className="w-full h-[39px] px-3 text-white py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400"
       />
       {showOptions && (
-        <ul className="absolute z-10 w-full mt-1 bg-gray-800 border border-gray-600 rounded-md shadow-lg max-h-60 overflow-y-auto">
+        <ul className="absolute z-10 w-full mt-1 text-white bg-gray-800 border border-gray-600 rounded-md shadow-lg max-h-60 overflow-y-auto">
           {filteredOptions.map((option, index) => (
             <li
               key={index}

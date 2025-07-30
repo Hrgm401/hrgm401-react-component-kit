@@ -3,6 +3,7 @@
  * @description ファイルを選択またはドロップして画面から取り込むことが得きるコンポーネント
  */
 import { type ChangeEvent, type DragEvent, useRef, useState } from "react";
+import { UploadCloud } from 'lucide-react';
 
 type Props = {
   handleFileChange: (files: FileList) => void;
@@ -53,28 +54,27 @@ export const DragFileSpace = ({ handleFileChange }: Props) => {
           onDrop={handleDrop}
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
-          style={{
-            width: "560px",
-            height: "400px",
-            border: "2px dashed #999",
-            backgroundColor: isDragging ? "#eee" : "#f9f9f9",
-            textAlign: "center",
-            lineHeight: "400px",
-            color: "#555",
-            cursor: "pointer",
-            transition: "background-color 0.3s",
-          }}
+          className={`
+            w-[560px] h-[400px] border-4 rounded-lg border-dashed border-sky-300
+            flex items-center justify-center
+            text-gray-800 cursor-pointer
+            transition-colors duration-300
+            ${isDragging ? 'bg-sky-100' : 'bg-white'}
+          `}
         >
-          ファイルを選択 または ドロップ
-          <input
-            type="file"
-            ref={fileInputRef}
-            onChange={handleChange}
-            style={{ display: "none" }}
-          />
+          <div className="flex flex-col items-center gap-2 text-gray-500">
+            <UploadCloud size={64} strokeWidth={1.5} />
+            ファイルを選択 または ドロップ
+            <input
+              type="file"
+              ref={fileInputRef}
+              onChange={handleChange}
+              style={{ display: "none" }}
+            />
+          </div>
         </div>
       ) : (
-        <div className="bg-stone-100 rounded-md w-auto px-4 py-2 text-sm/6 font-medium text-gray-900">
+        <div className="bg-sky-100 rounded-md w-auto px-4 py-2 text-sm/6 font-medium text-gray-900">
           {fileName}
         </div>
       )}
