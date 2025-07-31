@@ -8,7 +8,7 @@ type Props = {
   val: Option;
   selectedVal?: string;
   handleChange: (value: string) => void;
-  unqUi: string;
+  unqUi?: string;
 };
 
 export const TabButton = ({ val, selectedVal, handleChange, unqUi }: Props) => {
