@@ -85,7 +85,7 @@ export const CodeBlock = ({ title, code, lang }: Props) => {
       </div>
       <pre className="bg-gray-800 p-4 text-sm whitespace-pre-wrap break-all overflow-x-auto">
         {/* <code ref={codeRef} className={lang ? `language-${lang}` : ''}>{code || "// Enter table and column information to generate code."}</code> */}
-        <code className={lang ? `language-${lang}` : ''}>{code || "// Enter table and column information to generate code."}</code>
+        <code className={lang ? `language-${lang} ` : ''}>{code || "// Enter table and column information to generate code."}</code>
       </pre>
     </div>
   );

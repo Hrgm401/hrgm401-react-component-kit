@@ -12,7 +12,7 @@ const meta = {
     argTypes: {
         title: { control: 'text' },
         code: { control: 'text' },
-        lang: { 
+        lang: {
             options: ['typescript', 'javascript', 'csharp', 'python', 'sql', 'bash', 'json', 'markdown'],
             control: 'radio',
          },

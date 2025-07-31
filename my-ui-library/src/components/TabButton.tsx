@@ -17,9 +17,9 @@ export const TabButton = ({ val, selectedVal, handleChange, unqUi }: Props) => {
     const baseClasses =
       "relative p-1.5 px-2 rounded-lg border border-transparent transition-all duration-200 font-bold text-base min-w-[100px] max-w-[200px] shrink grow basis-auto focus:outline-none";
     const normalStateClasses =
-      "bg-transparent text-gray-700 hover:bg-gray-200 hover:after:content-[''] hover:after:absolute hover:after:left-[20%] hover:after:bottom-[-13px] hover:after:h-[3px] hover:after:w-[60%] hover:after:rounded-t-[10px] hover:after:bg-gray-400";
+      "bg-transparent text-gray-700 hover:bg-gray-200 hover:after:content-[''] hover:after:absolute hover:after:left-[20%] hover:after:bottom-[-13px] hover:after:h-[3px] hover:after:w-[60%] hover:after:rounded-t-[30px] hover:after:bg-gray-400";
     const activeStateClasses =
-      "bg-sky-200 text-sky-800 hover:bg-sky-200 focus:bg-sky-200 after:content-[''] after:absolute after:left-[20%] after:bottom-[-13px] after:h-[3px] after:w-[60%] after:rounded-t-[10px] after:bg-sky-500";
+      "bg-sky-200 text-sky-800 hover:bg-sky-200 focus:bg-sky-200 after:content-[''] after:absolute after:left-[20%] after:bottom-[-13px] after:h-[3px] after:w-[60%] after:rounded-t-[30px] after:bg-sky-500";
     style = `${baseClasses} ${
       selectedVal === val.value ? activeStateClasses : normalStateClasses
     }`;

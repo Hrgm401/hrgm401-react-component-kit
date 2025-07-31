@@ -26,7 +26,7 @@ export const IconTabs: React.FC<IconTabsProps> = ({ options, value, onChange, co
   }, [color]);
 
   return (
-    <div className="flex items-center space-x-4 border-b border-gray-700 mb-6">
+    <div className={`${color === "light" ? "flex border-gray-300 items-center space-x-4 border-b mb-6" : "flex border-gray-700 items-center space-x-4 border-b mb-6"}`}>
       {options.map((option) => (
         <button
           key={option.id}
