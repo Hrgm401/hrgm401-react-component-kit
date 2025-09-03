@@ -47,6 +47,11 @@ export const InputSelect: React.FC<InputSelectProps> = ({ options, value, onChan
     setIsFocused(false);
   };
 
+  const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
+    event.target.select();
+    setIsFocused(true)
+  }
+
   const showOptions = isFocused && filteredOptions.length > 0;
 
   return (
@@ -55,17 +60,18 @@ export const InputSelect: React.FC<InputSelectProps> = ({ options, value, onChan
         type="text"
         value={inputValue}
         onChange={handleInputChange}
-        onFocus={() => setIsFocused(true)}
+        onFocus={(e) => handleFocus(e)}
         placeholder={placeholder}
-        className="w-full h-[39px] px-3 text-white py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400"
+        className="w-full h-[39px] px-4 py-2 text-gray-800 bg-white border-2 border-gray-200 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-sky-400 transition-colors"
       />
       {showOptions && (
-        <ul className="absolute z-10 w-full mt-1 text-white bg-gray-800 border border-gray-600 rounded-md shadow-lg max-h-60 overflow-y-auto">
+        <ul className="z-50 bg-white border border-gray-200 rounded-xl shadow-lg max-h-60 overflow-y-auto 
+                        scrollbar scrollbar-track-transparent scrollbar-thumb-gray-400 scrollbar-thumb-rounded-full">
           {filteredOptions.map((option, index) => (
             <li
               key={index}
               onClick={() => handleOptionClick(option)}
-              className="px-3 py-2 cursor-pointer hover:bg-gray-700"
+              className="px-4 py-2 text-gray-600 cursor-pointer hover:bg-sky-100 hover:text-sky-700 first:rounded-t-xl last:rounded-b-xl"
             >
               {option}
             </li>

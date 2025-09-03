@@ -2,6 +2,7 @@
  * @file src/components/ui/SelectButton.tsx
  * @description 選択リストコンポーネント
  */
+import CreatableSelect from 'react-select/creatable';
 import Select, { type StylesConfig } from 'react-select';
 
 type Option = { label: string; value: string };
@@ -23,6 +24,10 @@ export const SelectButton = ({ name, list, selectedVal, handleChange, placeholde
         handleChange(newVal);
     }
 
+    const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
+        event.target.select();
+    };
+
     const customStyles: StylesConfig<Option, false> = {
         control: (provided, state) => ({
             ...provided,
@@ -31,6 +36,10 @@ export const SelectButton = ({ name, list, selectedVal, handleChange, placeholde
             '&:hover': {
                 borderColor: 'oklch(0.828 0.111 230.318)'
             }
+        }),
+        indicatorSeparator: (provided) => ({
+            ...provided,
+            display: 'none',
         }),
         menu: (provided) => ({
             ...provided,
@@ -53,7 +62,7 @@ export const SelectButton = ({ name, list, selectedVal, handleChange, placeholde
         <div className="w-full">
             <div className="grid grid-cols-3 py-1 rounded-xl px-4 flex items-center">
                 <label className="w-16 col-span-1 text-sm py-1 font-medium">{name}</label>
-                <Select
+                <CreatableSelect
                     name={name}
                     value={selectedOption}
                     onChange={onChange}
@@ -61,6 +70,8 @@ export const SelectButton = ({ name, list, selectedVal, handleChange, placeholde
                     placeholder={placeholder || "選択してください"}
                     className={clName}
                     styles={customStyles}
+                    formatCreateLabel={(inputValue) => `${inputValue}`}
+                    onFocus={handleFocus}
                 />
             </div>
         </div>
