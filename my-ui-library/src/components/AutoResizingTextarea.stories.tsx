@@ -36,13 +36,18 @@ export const Default: Story = {
         };
 
         return(
-            <div className=''>
-                <AutoResizingTextarea
-                    {...args}
-                    text={inputted}
-                    onChange={handleChange}
-                />
+            <div className='flex justify-center '>
+                <div className='flex items-end'>
+                    <div className='w-[1000px] p-4'>
+                        <AutoResizingTextarea
+                            {...args}
+                            text={inputted}
+                            onChange={handleChange}
+                        />
+                    </div>
+                </div>
             </div>
+            
         )
     }
 };

@@ -90,7 +90,7 @@ export const ScrollableList = ({ options, selected, handleChange }: Props) => {
         <ChevronLeft />
       </button>
 
-      <div className="embla" ref={emblaRef}>
+      <div className="embla flex-1 min-w-0 h-14" ref={emblaRef}>
         <div className="embla__container flex">
           {options.map((item) => (
             <div key={item.value} className="embla__slide flex-shrink-0 px-1 py-2">
