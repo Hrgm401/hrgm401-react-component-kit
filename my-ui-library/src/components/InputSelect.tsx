@@ -62,7 +62,7 @@ export const InputSelect: React.FC<InputSelectProps> = ({ options, value, onChan
         onChange={handleInputChange}
         onFocus={(e) => handleFocus(e)}
         placeholder={placeholder}
-        className="w-full h-[39px] px-4 py-2 text-gray-800 bg-white border-2 border-gray-200 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-sky-400 transition-colors"
+        className="w-full h-[39px] px-4 py-2 text-gray-800 bg-white border-1 border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-sky-300 focus:border-sky-300 transition-colors"
       />
       {showOptions && (
         <ul className="z-50 bg-white border border-gray-200 rounded-xl shadow-lg max-h-60 overflow-y-auto 

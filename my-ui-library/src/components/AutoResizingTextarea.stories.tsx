@@ -36,7 +36,7 @@ export const Default: Story = {
         };
 
         return(
-            <div className='flex justify-center '>
+            <div className='flex justify-center mt-20'>
                 <div className='flex items-end'>
                     <div className='w-[1000px] p-4'>
                         <AutoResizingTextarea
