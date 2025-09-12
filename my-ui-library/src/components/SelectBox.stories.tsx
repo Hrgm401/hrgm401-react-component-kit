@@ -49,7 +49,7 @@ export const Default: Story = {
         };
 
         return (
-            <div className='w-50'>
+            <div  className='w-[219px]'>
                 <SelectBox
                 {...args}
                 value={current}

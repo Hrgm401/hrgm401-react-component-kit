@@ -25,7 +25,7 @@ export const AutoResizingTextarea = ({text, placeholder = '自由入力...', onC
             <textarea ref={textareaRef}  placeholder={placeholder} value={text} onInput={handleInput} onChange={(e) => onChange(e.target.value)} rows={1}
                 className="p-2 w-full min-h-[28px] max-h-[400px] overflow-y-auto bg-white focus:outline-none focus:ring-1 focus:ring-sky-300 focus:border-sky-300
                     pr-16 box-border focus:outline-none resize-none border border-gray-300 rounded-xl"/>
-            <button className="p-1.5 me-2 bg-sky-100 hover:bg-sky-200 rounded-full font-semibold text-sky-500
+            <button className="p-1.5 me-2 bg-sky-100 text-gray-700 hover:bg-sky-200 rounded-full font-semibold hover:text-sky-500
                 absolute bottom-3 right-2">
                 <Send className="w-4 h-4" />
             </button>

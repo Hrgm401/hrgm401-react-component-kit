@@ -37,7 +37,7 @@ export const Default: Story = {
         <div className="flex flex-col h-full p-2">
             <div className="flex-grow overflow-y-auto mb-4">
                 {/* チャット履歴などの表示エリア */}
-                <p className="text-sm text-gray-600">サイドバーコンテンツが入ります。</p>
+                <p className="text-sm text-gray-600 pl-3">サイドバーコンテンツが入ります。</p>
             </div>
         </div>
         ),

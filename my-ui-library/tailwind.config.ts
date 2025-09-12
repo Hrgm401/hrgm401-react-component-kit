@@ -1,5 +1,6 @@
 // tailwind.config.ts
 import type { Config } from 'tailwindcss'
+import scrollbar from 'tailwind-scrollbar'
 
 export default {
   content: [
@@ -7,21 +8,10 @@ export default {
   ],
   theme: {
     extend: {
-      // ぽよんとしたアニメーションのキーフレームを定義
-      keyframes: {
-        'poyon': {
-          '0%': { transform: 'scale(0.5)', opacity: '0' },
-          '50%': { transform: 'scale(1.1)', opacity: '1' },
-          '100%': { transform: 'scale(1)', opacity: '1' },
-        }
-      },
-      // keyframesをアニメーションとして登録
-      animation: {
-        'poyon': 'poyon 0.2s ease-out forwards',
-      }
+      
     },
   },
   plugins: [
-    
+    scrollbar,
   ],
 } satisfies Config

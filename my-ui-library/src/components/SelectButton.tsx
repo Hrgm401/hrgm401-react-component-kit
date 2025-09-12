@@ -3,7 +3,7 @@
  * @description 選択リストコンポーネント
  */
 import CreatableSelect from 'react-select/creatable';
-import Select, { type StylesConfig } from 'react-select';
+import { type StylesConfig } from 'react-select';
 
 type Option = { label: string; value: string };
 
@@ -16,7 +16,7 @@ export type Props = {
 }
 
 export const SelectButton = ({ name, list, selectedVal, handleChange, placeholder="選択してください" }: Props) => {
-    const baseStyle = 'min-w-[150px] w-full rounded-xl col-span-2 text-sm';
+    const baseStyle = 'min-w-[150px] w-full col-span-2 text-sm';
 
     const selectedOption = list.find(opt => opt.value === selectedVal);
     const onChange = (selected: Option| null) => {
@@ -32,9 +32,10 @@ export const SelectButton = ({ name, list, selectedVal, handleChange, placeholde
         control: (provided, state) => ({
             ...provided,
             borderRadius: '12px',
-            borderColor: state.isFocused ? 'oklch(0.828 0.111 230.318)' : 'oklch(0.967 0.003 264.542)',
+            boxShadow: state.isFocused ? '0 0 0 1px #7dd3fc' : provided.boxShadow,
+            borderColor: state.isFocused ? '#7dd3fc' : '#d1d5db',
             '&:hover': {
-                borderColor: 'oklch(0.828 0.111 230.318)'
+                borderColor: '#7dd3fc'
             }
         }),
         indicatorSeparator: (provided) => ({
@@ -43,21 +44,27 @@ export const SelectButton = ({ name, list, selectedVal, handleChange, placeholde
         }),
         menu: (provided) => ({
             ...provided,
-            borderRadius: '12px',
+            marginTop: '4px', // mt-1
+            borderRadius: '12px', // rounded-xl
+            border: '1px solid #e5e7eb', // border border-gray-200
+            boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)', // shadow-lg
             overflow: 'hidden',
         }),
         option: (provided, state) => ({
             ...provided,
-            backgroundColor: state.isSelected ? 'oklch(0.828 0.111 230.318)' : state.isFocused ? '#e9ecef' : undefined,
-            color: state.isSelected ? 'white' : 'black',
-        '&:active': {
-            backgroundColor: 'oklch(0.746 0.16 232.661)',
-            color: 'white',
-        },
+            padding: '8px 16px', // px-4 py-2
+            cursor: 'pointer',
+            // state.isFocusedがhover状態にあたる
+            backgroundColor: state.isSelected ? '#e0f2fe' : state.isFocused ? '#f0f9ff' : 'white', // 選択済み(sky-100), hover(sky-50), 通常
+            color: state.isSelected ? '#0369a1' : state.isFocused ? '#0369a1' : '#374151', // 選択済み(sky-700), hover(sky-700), 通常(gray-700)
+            // クリック(active)時のスタイル
+            '&:active': {
+                backgroundColor: '#bae6fd', // bg-sky-200 相当
+            },
         }),
     };
 
-    const clName = `${baseStyle} ${selectedVal ? 'bg-sky-100 border-sky-100' : 'bg-white border-white'}`;
+    const clName = baseStyle;
     return (
         <div className="w-full">
             <div className="grid grid-cols-3 py-1 rounded-xl px-4 flex items-center">

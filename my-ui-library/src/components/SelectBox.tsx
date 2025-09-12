@@ -38,18 +38,18 @@ export const SelectBox: React.FC<SelectProps> = ({ options, value, onChange, pla
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className={`flex w-full h-[39px] px-3 py-2 bg-white border border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-sky-300 focus:border-sky-300 transition-colors ${
+        className={`flex items-center justify-between gap-2 w-full h-[39px] px-3 pr-6 py-2 bg-white border border-gray-300 rounded-xl focus:outline-hidden focus:ring-1 focus:ring-sky-300 focus:border-sky-300 transition-colors ${
           !value ? 'text-gray-400' : 'text-gray-800'
         }`}
       >
-        <span className="">{value || placeholder}</span>
+        <span>{value || placeholder}</span>
         <svg
-            className={`absolute top-3 right-2 w-4 h-4 transition-transform duration-200 ${isOpen ? 'transform rotate-180' : ''}`}
+            className={`w-4 h-4 pt-3 transition-transform duration-200 ${isOpen ? 'transform rotate-180' : ''}`}
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
-            >
+        >
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
         </svg>
         </button>
