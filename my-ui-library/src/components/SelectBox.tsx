@@ -44,7 +44,7 @@ export const SelectBox: React.FC<SelectProps> = ({ options, value, onChange, pla
       >
         <span>{value || placeholder}</span>
         <svg
-            className={`w-4 h-4 pt-3 transition-transform duration-200 ${isOpen ? 'transform rotate-180' : ''}`}
+            className={`w-4 h-4 transition-transform duration-200 hover:text-gray-700 ${isOpen ? 'transform rotate-180' : ''}`}
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"

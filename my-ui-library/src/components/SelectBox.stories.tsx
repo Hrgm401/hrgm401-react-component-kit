@@ -32,7 +32,7 @@ export const Default: Story = {
     args: {
         options: defaultOptions,
         value: "",
-        placeholder: '言語を入力、または選択'
+        placeholder: '言語を選択してください'
     },
     argTypes: {
         value: { options: defaultOptions.map(opt => opt) },
@@ -56,6 +56,42 @@ export const Default: Story = {
                 onChange={handleChange}
             />
             </div>
+            
+        )
+    }
+}
+export const WithLabel: Story = {
+    args: {
+        options: defaultOptions,
+        value: "",
+        placeholder: '選択してください'
+    },
+    argTypes: {
+        value: { options: defaultOptions.map(opt => opt) },
+    },
+    render: (args) => {
+        const [current, setCurrent] = useState(args.value);
+        useEffect(() => {
+            setCurrent(args.value);
+        }, [args.value]);
+
+        const handleChange = (val: string) => {
+            args.onChange(val);
+            setCurrent(val);
+        };
+
+        return (
+            <div className='flex items-center'>
+                <label className="w-16 col-span-1 text-sm py-1 font-medium">言語</label>
+                <div  className='w-[170px]'>
+                    <SelectBox
+                        {...args}
+                        value={current}
+                        onChange={handleChange}
+                    />
+                </div>
+            </div>
+            
             
         )
     }

@@ -17,22 +17,22 @@ export const ExplanatorySidebar: React.FC<SidebarProps> = ({ isOpen, onClose, ti
     <>
       {/* Backdrop */}
       <div
-        className={`fixed inset-0 bg-black/60 z-40 transition-opacity ${
+        className={`fixed inset-0 bg-black/40 z-40 transition-opacity ${
           isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
         onClick={onClose}
       />
       {/* Sidebar */}
       <div
-        className={`fixed top-0 right-0 h-full w-full max-w-md bg-gray-800 text-white z-50 shadow-2xl transform transition-transform ${
+        className={`fixed top-0 right-0 h-full w-full max-w-md bg-white text-gray-700 z-50 shadow-2xl transform transition-transform ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
-        <div className="flex items-center justify-between p-4 border-b border-gray-700">
+        <div className="flex items-center justify-between p-4 border-b border-gray-300">
           <h2 className="text-lg font-semibold">{title}</h2>
           <button
             onClick={onClose}
-            className="p-2 text-gray-400 rounded-full hover:bg-gray-700 hover:text-white transition-colors"
+            className="p-2 text-gray-400 rounded-full hover:bg-sky-200 hover:text-gray-700 transition-colors"
           >
             <X className="w-6 h-6" />
           </button>

@@ -77,7 +77,7 @@ export const SelectButton = ({ name, list, selectedVal, handleChange, placeholde
                     placeholder={placeholder || "選択してください"}
                     className={clName}
                     styles={customStyles}
-                    formatCreateLabel={(inputValue) => `${inputValue}`}
+                    // formatCreateLabel={(inputValue) => `${inputValue}`}
                     onFocus={handleFocus}
                 />
             </div>
