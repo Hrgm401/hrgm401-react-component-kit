@@ -56,10 +56,10 @@ export const Default: Story = {
                 onChange={handleChange}
             />
             </div>
-            
         )
     }
 }
+
 export const WithLabel: Story = {
     args: {
         options: defaultOptions,
@@ -91,8 +91,6 @@ export const WithLabel: Story = {
                     />
                 </div>
             </div>
-            
-            
         )
     }
 }

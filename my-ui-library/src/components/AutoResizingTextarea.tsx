@@ -1,6 +1,6 @@
 import { Send } from "lucide-react";
 import { useRef } from "react";
-export type Props = {
+type Props = {
     text: string,
     placeholder?: string,
     onChange: (value: string) => void;

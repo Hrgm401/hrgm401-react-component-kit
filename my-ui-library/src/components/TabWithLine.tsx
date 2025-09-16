@@ -9,7 +9,7 @@ type Props = {
   options: Option[];
   selected: string;
   handleChange: (value: string) => void;
-  handleDelete: (value: string) => void | undefined;
+  handleDelete?: (value: string) => void;
   unqUi: string;
 };
 

@@ -1,12 +1,16 @@
 import './index.css';
+export * from './components/AutoResizingTextarea';
 export * from './components/CodeBlock';
 export * from './components/DragFileSpace';
+export * from './components/EditableTable';
 export * from './components/ExplanatorySidebar';
 export * from './components/IconTabs';
 export * from './components/InputSelect';
 export * from './components/ScrollableList';
+export * from './components/SelectBox';
 export * from './components/SelectButton';
+export * from './components/Sidebar';
 export * from './components/TabButton';
-export * from './components/Table';
+export * from './components/NomalTable';
 export * from './components/TabWithLine';
 export * from './hooks/useInferOptions';

@@ -55,7 +55,7 @@ export const DragFileSpace = ({ handleFileChange }: Props) => {
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
           className={`
-            w-[560px] h-[400px] border-4 rounded-lg border-dashed border-sky-300
+            w-full h-full border-4 rounded-lg border-dashed border-sky-300
             flex items-center justify-center
             text-gray-800 cursor-pointer
             transition-colors duration-300

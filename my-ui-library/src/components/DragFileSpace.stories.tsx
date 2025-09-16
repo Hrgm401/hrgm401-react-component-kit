@@ -20,5 +20,15 @@ export default meta;
 type Story = StoryObj<typeof DragFileSpace>;
 
 export const Default: Story = {
-
+    render: (args) => {
+        return (
+            <div className='flex h-80 w-lg'>
+                <div className='flex-1'>
+                    <DragFileSpace
+                    {...args}
+                />
+                </div>
+            </div>
+        );
+      },
 };
