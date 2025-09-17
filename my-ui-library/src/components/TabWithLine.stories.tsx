@@ -102,7 +102,7 @@ export const Deletable: Story = {
     const handleTabDelete = (value: string) => {
       const newOptions = currentOptions.filter((opt) => opt.value !== value);
       setCurrentOptions(newOptions);
-      args.handleDelete(value);
+      if(args.handleDelete) args.handleDelete(value);
 
       // もし選択中のタブを削除したら、先頭のタブを選択状態にする
       if (selected === value) {

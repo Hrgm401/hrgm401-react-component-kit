@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState, useEffect } from 'react';
-import { ScrollableList, type Option } from './ScrollableList';
+import { ScrollableList } from './ScrollableList';
+import { type Option } from '../types/Option';
 
 const meta = {
     title: 'UI/ScrollableList',

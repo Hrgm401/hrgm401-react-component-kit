@@ -7,7 +7,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { TabButton } from "./TabButton";
 
-export type Option = { label: string; value: string };
+type Option = { label: string; value: string };
 type Props = {
   options: Option[];
   selected: string;

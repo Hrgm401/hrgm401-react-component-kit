@@ -1,4 +1,4 @@
-import React, { type FC, type ChangeEvent } from 'react';
+import { type FC, type ChangeEvent } from 'react';
 import { SelectBox } from './SelectBox'; // SelectBoxコンポーネントをインポート
 
 // --- 型定義 (変更なし) ---

@@ -1,5 +1,6 @@
 {
   "name": "@Hrgm401/my-ui-library",
+  "private": true,
   "version": "1.0.0",
   "type": "module",
   "publishConfig": {
@@ -10,6 +11,7 @@
     "url": "https://github.com/Hrgm401/my-ui-library.git"
   },
   "main": "./dist/my-ui-library.umd.cjs",
+  "module": "./dist/my-ui-library.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {

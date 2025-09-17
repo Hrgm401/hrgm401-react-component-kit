@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState, useEffect } from 'react';
-import { SelectButton, type Option } from './SelectButton';
+import { SelectButton } from './SelectButton';
+import { type Option } from '../types/Option';
 
 const meta = {
     title: 'UI/SelectButton',

@@ -14,3 +14,4 @@ export * from './components/Sidebar';
 export * from './components/TabButton';
 export * from './components/TabWithLine';
 export * from './hooks/useInferOptions';
+export * from './types/Option';

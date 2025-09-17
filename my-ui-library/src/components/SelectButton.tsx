@@ -7,7 +7,7 @@ import { type StylesConfig } from 'react-select';
 
 type Option = { label: string; value: string };
 
-export type Props = {
+type Props = {
     name: string;
     list: Option[];
     selectedVal?: string;
