@@ -1,6 +1,6 @@
 {
   "name": "@Hrgm401/my-ui-library",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
@@ -14,9 +14,11 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/my-ui-library.js",
       "require": "./dist/my-ui-library.umd.cjs"
-    }
+    },
+    "./style.css": "./dist/style.css"
   },
   "files": [
     "dist"
