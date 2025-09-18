@@ -1,6 +1,6 @@
 {
   "name": "@Hrgm401/my-ui-library",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "module",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
@@ -18,14 +18,14 @@
       "import": "./dist/my-ui-library.js",
       "require": "./dist/my-ui-library.umd.cjs"
     },
-    "./style.css": "./dist/style.css"
+    "./style.css": "./dist/my-ui-library.css"
   },
   "files": [
     "dist"
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",

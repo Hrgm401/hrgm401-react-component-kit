@@ -9,7 +9,7 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
-    dts({tsconfigPath: './tsconfig.json'}),
+    dts({tsconfigPath: './tsconfig.app.json'}),
   ],
   build: {
     lib: {
