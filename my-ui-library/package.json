@@ -1,6 +1,6 @@
 {
   "name": "@Hrgm401/my-ui-library",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
@@ -37,8 +37,6 @@
     "lucide-react": "^0.525.0",
     "prism-themes": "^1.9.0",
     "prismjs": "^1.30.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
     "react-select": "^5.10.2",
     "tailwind-scrollbar": "^4.0.2"
   },
@@ -65,7 +63,9 @@
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.35.1",
     "vite": "^7.0.4",
-    "vite-plugin-dts": "^4.5.4"
+    "vite-plugin-dts": "^4.5.4",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "peerDependencies": {
     "react": "^19.1.0",
