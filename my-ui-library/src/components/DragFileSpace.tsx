@@ -74,8 +74,14 @@ export const DragFileSpace = ({ handleFileChange }: Props) => {
           </div>
         </div>
       ) : (
-        <div className="bg-sky-100 rounded-md w-auto px-4 py-2 text-sm/6 font-medium text-gray-900">
+        <div className="relative bg-sky-100 rounded-md w-auto px-4 py-2 text-sm/6 font-medium text-gray-900">
           {fileName}
+          <button
+            onClick={() => setFileName("")}
+            className="absolute -top-3 -right-3 w-7 h-7 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center text-sm font-bold hover:bg-sky-400 hover:text-white"
+          >
+            ✕
+          </button>
         </div>
       )}
     </>
