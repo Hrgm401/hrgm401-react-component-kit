@@ -1,5 +1,5 @@
 import { Send } from "lucide-react";
-import { useRef } from "react";
+import { useState, useRef } from "react";
 type Props = {
     text: string,
     placeholder?: string,
@@ -7,6 +7,8 @@ type Props = {
 }
 export const AutoResizingTextarea = ({text, placeholder = '自由入力...', onChange}: Props) => {
     const textareaRef = useRef<HTMLTextAreaElement>(null);
+    const [expandBoxSize, setExpandBoxSize] = useState(false);
+    const [isShow, setIsShow] = useState(false);
     
     const handleInput = () => {
         if(textareaRef.current){
@@ -18,6 +20,8 @@ export const AutoResizingTextarea = ({text, placeholder = '自由入力...', onC
             const borderTop = parseInt(style.borderTopWidth, 10);
             const borderBtm = parseInt(style.borderBottomWidth, 10);
             textareaRef.current.style.height = `${scrollHeight + borderTop + borderBtm}px`;
+            
+            if((scrollHeight + borderTop + borderBtm) > )
         }
     }
     return (
