@@ -36,7 +36,7 @@ const DropdownMenu: FC<{
         <li
           key={index}
           onClick={() => onOptionClick(option)}
-          className={`px-4 py-2 text-gray-700 cursor-pointer hover:bg-sky-50 hover:text-sky-700 first:rounded-t-xl last:rounded-b-xl active:bg-sky-200
+          className={`px-4 py-2 text-gray-700 text-xs cursor-pointer hover:bg-sky-50 hover:text-sky-700 first:rounded-t-xl last:rounded-b-xl active:bg-sky-200
                       ${option === value && 'bg-sky-100 text-sky-700 hover:bg-sky-100'}`}
         >
           {option}
@@ -83,7 +83,7 @@ export const SelectBox: React.FC<SelectProps> = ({ options, value, onChange, pla
       <button
         type="button"
         onClick={handleToggle}
-        className={`flex items-center box-border justify-between gap-2 w-full h-[39px] px-3 py-2 bg-white border border-gray-300 rounded-xl focus:outline-hidden focus:border-2 focus:border-sky-300 transition-colors ${
+        className={`flex text-xs items-center box-border justify-between gap-2 w-full h-[30px] px-3 py-2 bg-white border border-gray-300 rounded-md focus:outline-hidden focus:border-1 focus:border-sky-300 transition-colors ${
           !value ? 'text-gray-400' : 'text-gray-800'
         }`}
       >

@@ -2,7 +2,7 @@
  * @file src/components/DragFileSpace.tsx
  * @description ファイルを選択またはドロップして画面から取り込むことが得きるコンポーネント
  */
-import { type ChangeEvent, type DragEvent, useRef, useState } from "react";
+import { type ChangeEvent, type DragEvent, useRef, useState, useEffect } from "react";
 import { UploadCloud } from 'lucide-react';
 
 type Props = {
@@ -12,6 +12,7 @@ export const DragFileSpace = ({ handleFileChange }: Props) => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [fileName, setFileName] = useState("");
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
   const handleClick = () => {
     fileInputRef.current?.click();
@@ -42,10 +43,36 @@ export const DragFileSpace = ({ handleFileChange }: Props) => {
 
   const handleFiles = (files: FileList) => {
     handleFileChange(files);
+
+    // 既存のプレビューがあれば先に解放
+    if (previewUrl) {
+      URL.revokeObjectURL(previewUrl);
+    }
+    
     if (files && files.length > 0) {
-      setFileName(files[0].name);
+      const file = files[0];
+      setFileName(file.name);
+
+      //画像かどうかチェック（png, jpeg, webp, gifなど）
+      if (file.type.startsWith("image/")) {
+        const url = URL.createObjectURL(file);
+        setPreviewUrl(url);
+      } else {
+        setPreviewUrl(null); // 画像以外ならプレビューはしない
+      }
+    } else {
+      // ファイルリストが空の場合 (リセットなど)
+      setFileName("");
+      setPreviewUrl(null);
     }
   };
+  const handleReset = () => {
+    setFileName('');
+    if(previewUrl){
+      URL.revokeObjectURL(previewUrl);
+    }
+    
+  }
   return (
     <>
       {fileName === "" ? (

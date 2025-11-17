@@ -9,7 +9,7 @@ export const Sidebar = ({ children }: Props ) => {
     const [onIcon, setOnIcon] = useState(false);
     const [isClose, setIsClose] = useState(false);
 
-    const clName = `h-screen bg-slate-50 shadow flex-shrink-0 border-e border-slate-200 transition-all duration-300 ease-in-out ${!isClose ? 'w-72' : 'w-15'}`;
+    const clName = `bg-slate-50 shadow flex-shrink-0 border-e border-slate-200 transition-all duration-300 ease-in-out ${!isClose ? 'w-full' : 'w-15'}`;
     return (
         <aside style={{ height: '100vh' }} className={clName}>
             <div className='pt-2 pe-2 flex justify-end'>

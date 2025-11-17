@@ -2,12 +2,13 @@
 @import 'tailwindcss';
 
 ::-webkit-scrollbar {
-  width: 12px; /* スクロールバーの幅 */
+  width: 10px; /* スクロールバーの幅 */
 }
 
 /* スクロールバーのトラック（背景部分）のスタイル */
 ::-webkit-scrollbar-track {
-  background: theme('colors.slate.200'); /* 背景色 */
+  margin: 16px;
+  background: theme('colors.slate.200');
   border-radius: 6px;
 }
 

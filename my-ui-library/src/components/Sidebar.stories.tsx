@@ -18,9 +18,11 @@ const meta = {
         (Story) => (
             <div className='flex h-screen'>
                 {/* Story() を呼び出すと、argsが適用されたSidebarが描画される */}
-                <Story />
-                <main className="flex-grow p-8">
-                    <h1 className="text-2xl font-bold">メインコンテンツ</h1>
+                <div className='w-72'>
+                    <Story />
+                </div>
+                <main className="flex-grow p-8 pt-11">
+                    <h1 className="text-2xl font-bold pb-2">メインコンテンツ</h1>
                     <p>ここに内容が入ります。</p>
                 </main>
             </div>
@@ -34,10 +36,10 @@ type Story = StoryObj<typeof Sidebar>;
 export const Default: Story = {
     args: {
         children: (
-        <div className="flex flex-col h-full p-2">
+        <div className="">
             <div className="flex-grow overflow-y-auto mb-4">
                 {/* チャット履歴などの表示エリア */}
-                <p className="text-sm text-gray-600 pl-3">サイドバーコンテンツが入ります。</p>
+                <p className="text-2xl font-bold text-sky-600 pl-8">サイドバーコンテンツ</p>
             </div>
         </div>
         ),
@@ -50,31 +52,51 @@ export const WithContentsTemplate: Story = {
         const [text, setText] = useState("");
         const [selectedlang, setSelectedLang] = useState('');
         const [selectedfm, setSelectedFm] = useState('');
+        const [theme, setTheme] = useState('');
 
         const langOptions: string[] = ['TypeScript', 'JavaScript'];
         const fwOptions: string[] = ['React', 'Angular', 'Vue'];
+        const themeOpts: string[] = ['明るい', '暗い', 'いい感じ'];
 
         return (
             <Sidebar {...args}>
-                <div>
-                    <button className='ms-4 mt-4 py-2 px-3 bg-sky-300 rounded-xl text-white text-sm font-bold hover:bg-sky-400'>コード作成</button>
-                    <div className='bg-white m-3 rounded-xl inset-shadow-sm p-4'>
-                        <label className='text-xs ps-2 font-bold text-sky-400'>言語</label>
-                        <InputSelect
-                        options={langOptions}
-                        value={selectedlang}
-                        onChange={(e) => setSelectedLang(e)}
-                        placeholder='言語を選択または入力'
-                        />
-                        <label className='text-xs ps-2 font-bold text-sky-400'>フレームワーク</label>
-                        <InputSelect
-                        options={fwOptions}
-                        value={selectedfm}
-                        onChange={(e) => setSelectedFm(e)}
-                        placeholder='フレームワークを選択または入力'
-                        />
+                <div className='flex flex-col'>
+                    <div className='flex justify-end'>
+                        <button className='me-4 mt-4 py-2 px-6 bg-sky-300 rounded-full text-white text-sm font-bold hover:bg-sky-400 w-20'>決定</button>
                     </div>
-                    <div className='p-4 absolute bottom-0 left-0'>
+                    
+                    <div className='bg-white m-3 rounded-xl inset-shadow-sm p-4 flex flex-col gap-2'>
+                        <div className='w-48'>
+                            <label className='text-xs ps-2 font-bold text-gray-500'>言語</label>
+                            <InputSelect
+                                options={langOptions}
+                                value={selectedlang}
+                                onChange={(e) => setSelectedLang(e)}
+                                placeholder='言語を選択または入力'
+                            />
+                        </div>
+                        <div className='w-34'>
+                            <label className='text-xs ps-2 font-bold text-gray-500'>フレームワーク</label>
+                            <InputSelect
+                                options={fwOptions}
+                                value={selectedfm}
+                                onChange={(e) => setSelectedFm(e)}
+                                placeholder='フレームワークを選択または入力'
+                            />
+                        </div>
+                    </div>
+                    <div className='bg-white mx-3 mt-1 rounded-xl inset-shadow-sm p-4 flex flex-col gap-2'>
+                        <div className='w-48'>
+                            <label className='text-xs ps-2 font-bold text-gray-500'>テーマ・雰囲気</label>
+                            <InputSelect
+                                options={fwOptions}
+                                value={selectedfm}
+                                onChange={(e) => setSelectedFm(e)}
+                                placeholder='雰囲気を入力'
+                            />
+                        </div>
+                    </div>
+                    <div className='p-4 absolute bottom-0 left-0 w-72'>
                         <AutoResizingTextarea
                             text={text}
                             onChange={(e) => setText(e)}
