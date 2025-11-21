@@ -65,7 +65,7 @@ export const InputSelect: React.FC<InputSelectProps> = ({ options, value, onChan
         className="w-full h-[30px] px-4 py-2 text-xs text-gray-800 bg-white border-1 border-gray-300 rounded-md focus:outline-none focus:ring-0.5 focus:ring-sky-300 focus:border-sky-300 transition-colors"
       />
       {showOptions && (
-        <ul className="z-50 bg-white border border-gray-200 rounded-xl shadow-lg max-h-60 overflow-y-auto 
+        <ul className="absolute top-8 w-full z-50 bg-white border border-gray-200 rounded-md shadow-lg max-h-60 overflow-y-auto 
                         scrollbar scrollbar-track-transparent scrollbar-thumb-gray-400 scrollbar-thumb-rounded-full">
           {filteredOptions.map((option, index) => (
             <li

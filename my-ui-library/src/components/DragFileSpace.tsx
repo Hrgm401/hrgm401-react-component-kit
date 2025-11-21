@@ -3,10 +3,11 @@
  * @description ファイルを選択またはドロップして画面から取り込むことが得きるコンポーネント
  */
 import { type ChangeEvent, type DragEvent, useRef, useState, useEffect } from "react";
-import { UploadCloud } from 'lucide-react';
+import { ImageUp } from 'lucide-react';
+import { ClosedButton } from './ClosedButton';
 
 type Props = {
-  handleFileChange: (files: FileList) => void;
+  handleFileChange: (files: FileList | null) => void;
 };
 export const DragFileSpace = ({ handleFileChange }: Props) => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
@@ -71,10 +72,24 @@ export const DragFileSpace = ({ handleFileChange }: Props) => {
     if(previewUrl){
       URL.revokeObjectURL(previewUrl);
     }
-    
-  }
+    setPreviewUrl(null);
+    if(fileInputRef.current){
+      fileInputRef.current.value = '';
+    }
+    handleFileChange(null);
+  };
+
+  useEffect(() => {
+    // コンポーネントがアンマウントされるときに URL を解放する
+    return () => {
+      if (previewUrl) {
+        URL.revokeObjectURL(previewUrl);
+      }
+    };
+  }, [previewUrl]);
+
   return (
-    <>
+    <div className="w-full h-full">
       {fileName === "" ? (
         <div
           onClick={handleClick}
@@ -82,16 +97,16 @@ export const DragFileSpace = ({ handleFileChange }: Props) => {
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
           className={`
-            w-full h-full border-4 rounded-lg border-dashed border-sky-300
+            w-full h-full border-2 rounded-xl border-dashed border-sky-400
             flex items-center justify-center
             text-gray-800 cursor-pointer
-            transition-colors duration-300
+            transition-colors duration-300 hover:bg-sky-100
             ${isDragging ? 'bg-sky-100' : 'bg-white'}
           `}
         >
-          <div className="flex flex-col items-center gap-2 text-gray-500">
-            <UploadCloud size={64} strokeWidth={1.5} />
-            ファイルを選択 または ドロップ
+          <div className="flex flex-col items-center gap-2 text-sky-400 text-xs">
+            <ImageUp size={48} strokeWidth={1.3} className='text-gray-600' />
+            ファイルを選択 / ドロップ
             <input
               type="file"
               ref={fileInputRef}
@@ -100,17 +115,25 @@ export const DragFileSpace = ({ handleFileChange }: Props) => {
             />
           </div>
         </div>
+      ) : previewUrl ? (
+        <div className="className='relative w-full h-full">
+          <div className='relative w-full h-full rounded-md overflow-hidden '>
+            <img src={previewUrl} alt={fileName} className='w-full h-full object-contain' />
+          </div>
+          <div className="absolute z-10 -top-2 -right-2">
+            <ClosedButton handleClose={handleReset} />
+          </div>
+        </div>
+        
       ) : (
         <div className="relative bg-sky-100 rounded-md w-auto px-4 py-2 text-sm/6 font-medium text-gray-900">
           {fileName}
-          <button
-            onClick={() => setFileName("")}
-            className="absolute -top-3 -right-3 w-7 h-7 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center text-sm font-bold hover:bg-sky-400 hover:text-white"
-          >
-            ✕
-          </button>
+          <div className="absolute z-10 -top-2 -right-2">
+            <ClosedButton handleClose={handleReset} />
+          </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
+

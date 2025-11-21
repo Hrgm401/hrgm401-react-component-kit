@@ -83,13 +83,13 @@ export const SelectBox: React.FC<SelectProps> = ({ options, value, onChange, pla
       <button
         type="button"
         onClick={handleToggle}
-        className={`flex text-xs items-center box-border justify-between gap-2 w-full h-[30px] px-3 py-2 bg-white border border-gray-300 rounded-md focus:outline-hidden focus:border-1 focus:border-sky-300 transition-colors ${
+        className={`flex text-xs items-center box-border justify-between gap-2 w-full h-[30px] ps-3 pe-1 py-2 bg-white border border-gray-300 rounded-md focus:outline-hidden focus:border-1 focus:border-sky-300 transition-colors ${
           !value ? 'text-gray-400' : 'text-gray-800'
         }`}
       >
         <span>{value || placeholder}</span>
         <svg
-            className={`w-4 h-4 transition-transform duration-200 hover:text-gray-700 ${isOpen ? 'transform rotate-180' : ''}`}
+            className={`w-6 h-6 p-1 transition-transform rounded-full hover:bg-slate-100 duration-200 hover:text-gray-700 active:bg-sky-200 ${isOpen ? 'transform rotate-180' : ''}`}
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"

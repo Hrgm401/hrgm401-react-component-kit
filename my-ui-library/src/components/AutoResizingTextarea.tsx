@@ -9,8 +9,9 @@ export const AutoResizingTextarea = ({text, placeholder = '自由入力...', onC
     const textareaRef = useRef<HTMLTextAreaElement>(null);
     const [expandBoxSize, setExpandBoxSize] = useState(false);
     const [isShow, setIsShow] = useState(false);
-    
-    const handleInput = () => {
+    const [hasShadow, setHasShadow] = useState(false);
+
+    const adjustHeight = () => {
         if(textareaRef.current){
             // ① テキストエリアの高さを一度リセット
             textareaRef.current.style.height = 'auto';
@@ -19,18 +20,21 @@ export const AutoResizingTextarea = ({text, placeholder = '自由入力...', onC
             const style = window.getComputedStyle(textareaRef.current);
             const borderTop = parseInt(style.borderTopWidth, 10);
             const borderBtm = parseInt(style.borderBottomWidth, 10);
-            textareaRef.current.style.height = `${scrollHeight + borderTop + borderBtm}px`;
-            
+            const totalHeight = scrollHeight + borderTop + borderBtm;
+            textareaRef.current.style.height = `${totalHeight}px`;
+
+            setHasShadow(totalHeight > 80);
+
             if((scrollHeight + borderTop + borderBtm) > 180){
                 setExpandBoxSize(true);
-            } else {
+            } else{
                 setExpandBoxSize(false);
             }
         }
     }
     return (
-        <div className="relative w-full text-xs shadow-[0_-35px_60px_-15px_rgba(255,255,255,0.9)] ">
-            <textarea ref={textareaRef}  placeholder={placeholder} value={text} onInput={handleInput} onChange={(e) => onChange(e.target.value)} rows={1}
+        <div className={`relative w-full text-xs ${hasShadow ? 'shadow-[0_-35px_60px_-15px_rgba(255,255,255,0.9)]' : 'shadow-none'} `}>
+            <textarea ref={textareaRef}  placeholder={placeholder} value={text} onInput={adjustHeight} onChange={(e) => onChange(e.target.value)} rows={1}
                 className={`p-2 w-full min-h-[80px] ${isShow ? 'max-h-[500px]' : 'max-h-[180px]'} overflow-y-auto bg-white focus:outline-none focus:ring-0.5 focus:ring-sky-300 focus:border-sky-300
                     pr-10 box-border focus:outline-none resize-none border border-gray-300 rounded-xl `}/>
             {expandBoxSize && (

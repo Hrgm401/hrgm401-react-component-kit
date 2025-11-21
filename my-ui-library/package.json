@@ -1,6 +1,6 @@
 {
   "name": "@Hrgm401/my-ui-library",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "type": "module",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
@@ -32,12 +32,12 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@monaco-editor/react": "^4.7.0",
     "@types/lodash-es": "^4.17.12",
     "axios": "^1.12.2",
+    "colord": "^2.9.3",
     "embla-carousel-react": "^8.6.0",
     "lucide-react": "^0.525.0",
-    "prism-themes": "^1.9.0",
-    "prismjs": "^1.30.0",
     "react-select": "^5.10.2",
     "tailwind-scrollbar": "^4.0.2"
   },
@@ -48,7 +48,6 @@
     "@storybook/react-vite": "9.0.18",
     "@tailwindcss/vite": "^4.1.13",
     "@types/node": "^24.1.0",
-    "@types/prismjs": "^1.26.5",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@vitejs/plugin-react": "^4.6.0",
