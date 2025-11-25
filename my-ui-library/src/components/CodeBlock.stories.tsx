@@ -281,6 +281,7 @@ const meta = {
             action: 'changed'
         },
         isDarkMode: { control: 'boolean' },
+        readonly: { control: 'boolean' },
     }
 }satisfies Meta<typeof CodeBlock>;
 

@@ -89,7 +89,7 @@ export const DragFileSpace = ({ handleFileChange }: Props) => {
   }, [previewUrl]);
 
   return (
-    <div className="w-full h-full">
+    <div className="relative w-full h-full">
       {fileName === "" ? (
         <div
           onClick={handleClick}
@@ -116,19 +116,19 @@ export const DragFileSpace = ({ handleFileChange }: Props) => {
           </div>
         </div>
       ) : previewUrl ? (
-        <div className="className='relative w-full h-full">
-          <div className='relative w-full h-full rounded-md overflow-hidden '>
+        <div>
+          <div className='w-full h-full rounded-md overflow-hidden '>
             <img src={previewUrl} alt={fileName} className='w-full h-full object-contain' />
           </div>
-          <div className="absolute z-10 -top-2 -right-2">
+          <div className="absolute z-10 -top-3 -right-3">
             <ClosedButton handleClose={handleReset} />
           </div>
         </div>
         
       ) : (
-        <div className="relative bg-sky-100 rounded-md w-auto px-4 py-2 text-sm/6 font-medium text-gray-900">
+        <div className="bg-sky-100 rounded-md w-auto px-4 py-2 text-sm/6 font-medium text-gray-900">
           {fileName}
-          <div className="absolute z-10 -top-2 -right-2">
+          <div className="absolute z-10 -top-3 -right-3">
             <ClosedButton handleClose={handleReset} />
           </div>
         </div>
