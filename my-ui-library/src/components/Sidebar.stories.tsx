@@ -42,7 +42,7 @@ export const Default: Story = {
     args: {},
     render: (args) => {
         return(
-            <div className="w-80">
+            <div className="w-80 h-dvh">
                     <Sidebar {...args}>
                         <div className='w-72'>
                             <div className="flex-grow overflow-y-auto mb-4">
@@ -69,7 +69,7 @@ export const WithContentsTemplate: Story = {
         const themeOpts: string[] = ['明るい', '暗い', 'いい感じ'];
 
         return (
-            <div className="w-80 relative">
+            <div className="w-80 relative h-dvh">
                 <Sidebar {...args}>
                     <div className='flex flex-col w-full'>
                         <div className='flex justify-end'>
@@ -145,7 +145,7 @@ export const WithLinkTemplate: Story = {
         }
 
         return (
-            <div className="w-64">
+            <div className="w-64 h-dvh">
                 <Sidebar {...args}>
                     <ul className="space-y-3 p-3">
                         <button className="text-base font-bold text-black" onClick={() => setCurrent(linkOptions.elements[0])}>{linkOptions.title}</button>

@@ -42,9 +42,9 @@ export const Sidebar = ({ children, color = DEFAULT_BG }: Props ) => {
         };
     }, [color]);
 
-    const clName = `shadow flex-shrink-0 border-e border-slate-200 transition-all duration-300 ease-in-out ${!isClose ? 'w-full' : 'w-15'}`;
+    const clName = `shadow flex-shrink-0 border-e border-slate-200 transition-all duration-300 h-full ease-in-out ${!isClose ? 'w-full' : 'w-15'}`;
     return (
-        <aside style={{ height: '100vh', backgroundColor: color }} className={clName}>
+        <aside style={{ backgroundColor: color }} className={clName}>
             <div className='pt-2 pe-2 flex justify-end'>
                 <div style={styles.btn as CSSProperties}
                     onMouseOver={() => setOnIcon(true)} 
