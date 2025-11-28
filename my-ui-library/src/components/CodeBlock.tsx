@@ -49,6 +49,22 @@ export const CodeBlock = ({ title, code, lang, onChange, isDarkMode = true, read
   const monacoLang = lang && LANG_MAP[lang] ? LANG_MAP[lang] : lang || "plaintext";
 
   const handleEditorWillMount = (monaco: Monaco) => {
+    // 1. エラー表示設定
+    monaco.languages.typescript.typescriptDefaults.setDiagnosticsOptions({
+      noSemanticValidation: true, // 型チェックなどの意味論的エラー（赤い波線）
+      noSyntaxValidation: false,  // 構文エラー
+    });
+
+    // 2. コンパイラオプション設定
+    monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
+      jsx: monaco.languages.typescript.JsxEmit.React, // JSX/TSX許可
+      jsxFactory: 'React.createElement',
+      reactNamespace: 'React',
+      allowNonTsExtensions: true,      //拡張子許容
+      allowJs: true,
+      target: monaco.languages.typescript.ScriptTarget.ESNext,
+    });
+
     //dark theme
     monaco.editor.defineTheme('gumi-dark', {
       base: "vs-dark",
