@@ -12,8 +12,8 @@ const DEFAULT_TEXT = 'oklch(55.1% 0.027 264.364)';//bg-gray-500
 type Props = {
   children?: ReactNode;
   color?: string;
-  controlled: boolean;
-  onToggle: (isClose: boolean) => void;
+  controlled?: boolean;
+  onToggle?: (isClose: boolean) => void;
 };
 
 export const Sidebar = ({ children, color = DEFAULT_BG, controlled = false, onToggle }: Props ) => {
