@@ -116,7 +116,7 @@ export const DragFileSpace = ({ handleFileChange }: Props) => {
           </div>
         </div>
       ) : previewUrl ? (
-        <div>
+        <div className='w-full h-full'>
           <div className='w-full h-full rounded-md overflow-hidden '>
             <img src={previewUrl} alt={fileName} className='w-full h-full object-contain' />
           </div>

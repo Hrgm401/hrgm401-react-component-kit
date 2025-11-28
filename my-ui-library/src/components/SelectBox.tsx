@@ -12,7 +12,6 @@ interface SelectProps {
   placeholder?: string;
 }
 
-// ドロップダウンメニュー部分を別コンポーネントとして切り出す
 const DropdownMenu: FC<{
   options: readonly string[];
   value: string;

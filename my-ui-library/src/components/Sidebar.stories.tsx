@@ -3,7 +3,10 @@ import { Sidebar } from './Sidebar';
 import { AutoResizingTextarea } from './AutoResizingTextarea';
 import { InputSelect } from './InputSelect';
 import { SelectBox } from './SelectBox';
-import { useState } from 'react';
+import { useState,useRef } from 'react';
+import { pixelToPercent } from '../utils/pixelToPersent';
+
+import { PanelGroup, Panel, PanelResizeHandle, ImperativePanelHandle } from "react-resizable-panels";
 
 const meta = {
     title: 'UI/Sidebar',
@@ -17,19 +20,14 @@ const meta = {
         color: {
             control: { type: 'color' },
             description: "デフォルトは薄いグレーです。"
-        }
+        },
+        controlled: { control: false },
+        onToggle: {control: 'boolean'}
     },
     decorators: [
         (Story) => (
             <div className='flex h-screen'>
-                {/* Story() を呼び出すと、argsが適用されたSidebarが描画される */}
-                <div>
-                    <Story />
-                </div>
-                <main className="flex-grow p-8 pt-11">
-                    <h1 className="text-2xl font-bold pb-2">メインコンテンツ</h1>
-                    <p>ここに内容が入ります。</p>
-                </main>
+                <Story />
             </div>
         ),
     ],
@@ -39,7 +37,9 @@ export default meta;
 type Story = StoryObj<typeof Sidebar>;
 
 export const Default: Story = {
-    args: {},
+    args: {
+        controlled: false
+    },
     render: (args) => {
         return(
             <div className="w-80 h-dvh">
@@ -56,8 +56,57 @@ export const Default: Story = {
     }
 };
 
+export const ResizableIntegration: Story = {
+    args: {
+        controlled: true
+    },
+    render: (args) => {
+        const containerRef = useRef<HTMLDivElement>(null);
+        const panelRef = useRef<ImperativePanelHandle>(null);
+        const [isDragging, setIsDragging] = useState(false);
+
+
+        const handleToggle = (isClose: boolean) => {
+            const panel = panelRef.current;
+            if (isClose) {
+                panel?.resize(pixelToPercent(60, containerRef));
+            } else {
+                panel?.resize(pixelToPercent(340, containerRef));
+            }
+        };
+
+        return (
+            <div ref={containerRef} className="h-screen w-full">
+                <PanelGroup direction="horizontal" className='flex h-full w-full relative'>
+                    <Panel ref={panelRef} defaultSize={20} minSize={4} className={!isDragging ? "transition-all duration-300 ease-in-out" : ""}>
+                        <Sidebar {...args} controlled={true} onToggle={handleToggle}>
+                            <div className="p-4 w-64">
+                                <h2 className="font-bold text-sky-600 mb-2">パネル連動モード</h2>
+                                <p className="text-sm text-gray-600">
+                                    境界線をドラッグしても、ボタンで開閉しても動作します。<br/><br/>
+                                    <strong>確認ポイント:</strong><br/>
+                                    閉じた状態でアイコンにカーソルを乗せてください。<br/>
+                                    ツールチップがリサイズバーの上に重なって表示されればPortal成功です。
+                                </p>
+                            </div>
+                        </Sidebar>
+                    </Panel>
+
+                    <PanelResizeHandle className='w-[2px] bg-slate-300 hover:w-[4px] hover:bg-sky-400 transition-all cursor-col-resize z-10'
+                        onDragging={(active) => setIsDragging(active)} />
+
+                    <Panel className="bg-white p-10">
+                        <h1 className="text-2xl font-bold">メインコンテンツエリア</h1>
+                        <p>右側のパネルです。</p>
+                    </Panel>
+                </PanelGroup>
+            </div>
+        );
+    }
+};
+
 export const WithContentsTemplate: Story = {
-    args: {},
+    args: {controlled: false},
     render: (args) => {
         const [text, setText] = useState("");
         const [selectedlang, setSelectedLang] = useState('');

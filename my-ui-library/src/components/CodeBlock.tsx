@@ -158,7 +158,7 @@ export const CodeBlock = ({ title, code, lang, onChange, isDarkMode = true, read
   };
 
   return (
-    <div className={`rounded-lg my-4 overflow-hidden border w-full h-full ${isDarkMode ? 'border-gray-700 bg-gray-900' : 'border-gray-200 bg-white'}`}>
+    <div className={`rounded-lg overflow-hidden border w-full h-full ${isDarkMode ? 'border-gray-700 bg-gray-900' : 'border-gray-200 bg-white'}`}>
       <div className={`flex justify-between items-center px-4 py-2 border-b ${isDarkMode ? 'border-gray-700' : 'border-gray-200'}`}>
           <p className={`text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>{title}</p>
           <button
