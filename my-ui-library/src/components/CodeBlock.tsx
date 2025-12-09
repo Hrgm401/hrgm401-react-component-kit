@@ -173,6 +173,7 @@ export const CodeBlock = ({ title, code, lang, onChange, isDarkMode = true, read
         <Editor
           height="100%"
           defaultLanguage={monacoLang}
+          path={title}
           language={monacoLang}
           value={code}
           theme={isDarkMode ? "gumi-dark" : "gumi-light"}

@@ -4,7 +4,7 @@ import { AutoResizingTextarea } from './AutoResizingTextarea';
 import { InputSelect } from './InputSelect';
 import { SelectBox } from './SelectBox';
 import { useState,useRef } from 'react';
-import { pixelToPercent } from '../utils/pixelToPersent';
+import { pixelToPercent } from '../utils/pixelToPercent';
 
 import { PanelGroup, Panel, PanelResizeHandle, ImperativePanelHandle } from "react-resizable-panels";
 
