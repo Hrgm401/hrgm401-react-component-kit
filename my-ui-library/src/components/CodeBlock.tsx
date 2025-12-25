@@ -52,7 +52,7 @@ export const CodeBlock = ({ title, code, lang, onChange, isDarkMode = true, read
     // 1. エラー表示設定
     monaco.languages.typescript.typescriptDefaults.setDiagnosticsOptions({
       noSemanticValidation: true, // 型チェックなどの意味論的エラー（赤い波線）
-      noSyntaxValidation: false,  // 構文エラー
+      noSyntaxValidation: true,  // 構文エラー
     });
 
     // 2. コンパイラオプション設定
