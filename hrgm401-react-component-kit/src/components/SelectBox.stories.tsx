@@ -10,7 +10,10 @@ const meta = {
     },
     tags: ['autodocs'],
     argTypes: {
-        options: {control: 'object'},
+        options: {
+            control: 'object',
+            description: '選択肢'
+        },
         value: {
             control: 'select',
             description: '現在選択中の選択肢名',
@@ -19,7 +22,10 @@ const meta = {
             action: 'changed',
             description: '選択肢変更時に呼び出されるコールバック関数',
         },
-        placeholder: {control: 'text'}
+        placeholder: {
+            control: 'text',
+            description: 'プレースホルダー'
+        }
     },
 } satisfies Meta<typeof SelectBox>;
 
@@ -28,6 +34,9 @@ type Story = StoryObj<typeof SelectBox>;
 
 const defaultOptions: string[] = ['TypeScript', 'JavaScript', 'Python', 'Java', 'C#', 'Go', 'Rust', 'PHP', 'Ruby', 'Swift'];
 
+/**
+ * ### 基本
+ */
 export const Default: Story = {
     args: {
         options: defaultOptions,
@@ -60,6 +69,9 @@ export const Default: Story = {
     }
 }
 
+/**
+ * ### 使用例
+ */
 export const WithLabel: Story = {
     args: {
         options: defaultOptions,

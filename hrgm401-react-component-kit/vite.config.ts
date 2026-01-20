@@ -17,7 +17,7 @@ export default defineConfig({
       entry: resolve('src/index.ts'),
       name: 'MyUiLibrary',
       //出力ファイル名
-      fileName: 'my-ui-library',
+      fileName: 'react-component-kit',
     },
     rollupOptions:{
       //パッケージに含めない外部ライブラリを指定

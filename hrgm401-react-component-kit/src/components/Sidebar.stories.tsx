@@ -124,7 +124,7 @@ export const WithContentsTemplate: Story = {
                         <div className='flex justify-end'>
                             <button className='me-4 mt-4 py-2 px-6 bg-sky-300 rounded-full text-white text-sm font-bold hover:bg-sky-400 w-20'>決定</button>
                         </div>
-                        
+                        ;:;
                         <div className='bg-white m-3 rounded-xl inset-shadow-sm p-4 flex flex-col gap-2'>
                             <div className='w-34'>
                                 <label className='text-xs ps-2 font-bold text-gray-500'>言語</label>
