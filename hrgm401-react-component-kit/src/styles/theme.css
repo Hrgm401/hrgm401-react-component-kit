@@ -1,0 +1,112 @@
+@theme {
+    /* カラー */
+    /* 青 */
+    --color-primary-50: #edfaff;
+    --color-primary-100: #d6f3ff;
+    --color-primary-200: #b6ecff;
+    --color-primary-300: #84e2ff;
+    --color-primary-400: #4ad0ff;
+    --color-primary-500: #20b2ff;
+    --color-primary-600: #0895ff;
+    --color-primary-700: #027df3;
+    --color-primary-800: #0965c8;
+    --color-primary-900: #0e559a;
+    --color-primary-950: #0e345d;
+
+    /* 緑 */
+    --color-secondary-50: #f5fee7;
+    --color-secondary-100: #e9fbcc;
+    --color-secondary-200: #d2f89e;
+    --color-secondary-300: #b4f066;
+    --color-secondary-400: #8ee228;
+    --color-secondary-500: #77ca18;
+    --color-secondary-600: #5aa10f;
+    --color-secondary-700: #457b10;
+    --color-secondary-800: #396113;
+    --color-secondary-900: #325215;
+    --color-secondary-950: #172e05;
+
+    /* 赤 */
+    --color-tertiary-50: #fff2f0;
+    --color-tertiary-100: #ffe3de;
+    --color-tertiary-200: #ffccc3;
+    --color-tertiary-300: #ffa89a;
+    --color-tertiary-400: #ff765f;
+    --color-tertiary-500: #ff4b2d;
+    --color-tertiary-600: #f54123;
+    --color-tertiary-700: #ce2307;
+    --color-tertiary-800: #aa210a;
+    --color-tertiary-900: #8c2210;
+    --color-tertiary-950: #4d0d02;
+
+    /* 黄色 */
+    --color-quaternary-50: #fdfee8;
+    --color-quaternary-100: #fcffc2;
+    --color-quaternary-200: #fcff89;
+    --color-quaternary-300: #fffc45;
+    --color-quaternary-400: #fcef13;
+    --color-quaternary-500: #ecd606;
+    --color-quaternary-600: #cca802;
+    --color-quaternary-700: #b18406;
+    --color-quaternary-800: #865f0d;
+    --color-quaternary-900: #724d11;
+    --color-quaternary-950: #432905;
+
+    /* 基本カラー */
+    --color-primary: var(--color-primary-600);
+    --color-primary-hover: var(--color-primary-700);
+    
+    --color-secondary: var(--color-secondary-600);
+    --color-secondary-hover: var(--color-secondary-700);
+    
+    --color-tertiary: var(--color-tertiary-600);
+    --color-tertiary-hover: var(--color-tertiary-700);
+    
+    --color-quaternary: var(--color-quaternary-600);
+    --color-quaternary-hover: var(--color-quaternary-700);
+}
+
+/* ライト/ダークテーマ */
+:root {
+    /* 背景 */
+    --color-bg: #ffffff;
+    --color-bg-subtle: #f8fafc;
+    --color-bg-muted: #f1f5f9;
+
+    /* テキスト */
+    --color-text: #1e293b;
+    --color-text-muted: #64748b;
+    --color-text-inverted: #ffffff;
+
+    /* ボーダー */
+    --color-border: #e2e8f0;
+    --color-border-strong: #cbd5e1;
+
+    /* シャドウ */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+
+    /* その他 */
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 8px;
+    --radius-xl: 10px;
+}
+
+/* ダーク */
+:root.dark,
+.dark {
+    --color-bg: #0f172a;
+    --color-bg-subtle: #1e293b;
+    --color-bg-muted: #334155;
+
+    --color-text: #f1f5f9;
+    --color-text-muted: #94a3b8;
+    --color-text-inverted: #0f172a;
+
+    --color-border: #334155;
+    --color-border-strong: #475569;
+
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4);
+}

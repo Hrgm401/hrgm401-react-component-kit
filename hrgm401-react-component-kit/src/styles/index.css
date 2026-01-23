@@ -1,51 +1,13 @@
-/* src/index.css */
 @import 'tailwindcss';
 
-::-webkit-scrollbar {
-  width: 10px; /* スクロールバーの幅 */
-}
+/* テーマ */
+@import './theme.css';
 
-/* スクロールバーのトラック（背景部分）のスタイル */
-::-webkit-scrollbar-track {
-  margin: 16px;
-  background: theme('colors.slate.200');
-  border-radius: 6px;
-}
+/* グローバルスタイル */
+@import './scrollbar.css';
+@import './animation.css';
 
-/* スクロールバーのサム（動く部分）のスタイル */
-::-webkit-scrollbar-thumb {
-  background: theme('colors.slate.400'); /* ハンドルの色 */
-  border-radius: 6px;
-}
-
-/* サムにホバーしたときのスタイル */
-::-webkit-scrollbar-thumb:hover {
-  background: theme('colors.slate.500');
-}
-
-@layer utilities {
-  /* カスタムアニメーション用のユーティリティクラスを定義 */
-  .animate-poyon {
-    animation: poyon 0.3s ease-out forwards;
-  }
-}
-
-/* カスタムキーフレームを定義 */
-@keyframes poyon {
-  0% {
-    transform: scale(0.5);
-    opacity: 0;
-  }
-  50% {
-    transform: scale(1.1);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
+/* 後ほど移行：保留 */
 .table-nomal {
     table-layout: fixed;
     width: 100%;
