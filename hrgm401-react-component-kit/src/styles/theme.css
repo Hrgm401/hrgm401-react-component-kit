@@ -64,10 +64,10 @@
     
     --color-quaternary: var(--color-quaternary-600);
     --color-quaternary-hover: var(--color-quaternary-700);
-}
 
-/* ライト/ダークテーマ */
-:root {
+    /* ライトテーマ（デフォルト）
+     * ダークモード時は .dark で上書きされる
+     */
     /* 背景 */
     --color-bg: #ffffff;
     --color-bg-subtle: #f8fafc;
