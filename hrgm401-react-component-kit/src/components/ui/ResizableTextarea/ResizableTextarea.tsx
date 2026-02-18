@@ -46,33 +46,27 @@ export const ResizableTextarea = forwardRef<HTMLTextAreaElement, Props>(
                     }}
                     rows={1}
                     className={cn(
-                        // ベーススタイル（構造）
                         "p-2 pr-10 w-full overflow-y-auto box-border min-h-20 resize-none rounded-xl outline-none",
-                        // テーマカラー
+                        "transition-[max-height] duration-300 ease-in-out",
                         "bg-bg text-text border border-border",
-                        // フォーカス
                         inputColorStyles(color),
-                        // 動的クラス
                         isExpanded ? "max-h-125" : "max-h-45",
-                        // 利用者のclassName（最優先で上書き）
+                        // 利用者のclassName（上書き）
                         className,
                     )}
                 />
                 {expandBoxSize && (
                     <button
                         className={cn(
-                            "absolute top-2 right-4 p-2",
+                            "absolute top-2 right-4 p-2 rounded-full",
+                            "transition-colors duration-300 ripple",
                             "text-text-muted",
-                            "hover:bg-bg-muted hover:rounded-full",
+                            "hover:bg-bg-muted",
                             "active:bg-primary-300/60",
                         )}
                         onClick={toggleExpand}
                     >
-                        {isExpanded ? (
-                            <Minimize2 className="w-4 h-4" />
-                        ) : (
-                            <Maximize2 className="w-4 h-4" />
-                        )}
+                        {isExpanded ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
                     </button>
                 )}
             </div>

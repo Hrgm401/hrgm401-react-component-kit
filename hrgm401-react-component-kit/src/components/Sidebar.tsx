@@ -56,7 +56,7 @@ export const Sidebar = ({ children, color = DEFAULT_BG, controlled = false, onTo
                     onMouseOver={() => setOnIcon(true)}
                     onMouseLeave={() => setOnIcon(false)}
                     onClick={handleToggle}
-                    className={`relative hover:rounded-full p-2 active:bg-sky-200 hover:bg--hover-bg)`}
+                    className={`relative hover:rounded-full p-2 active:bg-sky-200 hover:bg-(--hover-bg)`}
                 >
                     <PanelLeft className="w-5 h-5" />
                     <TooltipPortal targetRef={btnRef} visible={onIcon} color={tipColor}>

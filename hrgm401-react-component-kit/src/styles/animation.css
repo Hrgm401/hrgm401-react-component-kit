@@ -1,23 +1,141 @@
 /* 
  * ぽよんとしたイメージのアニメーション
  */
-@layer utilities {
-  .animate-poyon {
-    animation: poyon 0.3s ease-out forwards;
-  }
+@theme {
+  --animate-poyon: poyon 0.3s ease-out forwards;
+  --animate-fade-in: fade-in 0.15s ease-out forwards;
+  --animate-slide-down: slide-down 0.15s ease-out forwards;
+  --animate-slide-up: slide-up 0.12s ease-in forwards;
+  --animate-slide-in-right: slide-in-right 0.3s ease-out forwards;
+  --animate-overlay-in: overlay-in 0.2s ease-out forwards;
+  --animate-ripple: ripple 0.5s ease-out forwards;
 }
 
+/* ぽよんと広がる */
 @keyframes poyon {
   0% {
     transform: scale(0.5);
     opacity: 0;
   }
+
   50% {
     transform: scale(1.1);
     opacity: 1;
   }
+
   100% {
     transform: scale(1);
     opacity: 1;
+  }
+}
+
+/* ゆっくり現れる */
+@keyframes fade-in {
+  from {
+    opacity: 0
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+/* 少し大きくなる */
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scaleY(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+  }
+}
+
+/* 少し小さくなる */
+@keyframes slide-up {
+  from {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(-4px) scaleY(0.95);
+  }
+}
+
+/* 左にスライドする */
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* fade-inより少し早く表れる */
+@keyframes overlay-in {
+  from {
+    opacity: 0
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+@keyframes ripple {
+  from {
+    transform: scale(0);
+    opacity: 0.4;
+  }
+
+  to {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+/* クリックから波紋が広がる*/
+/* 色を変えたい場合 */
+/* <button className="ripple ..." style={{ '--ripple-color': 'var(--color-tertiary-300)' } as CSSProperties}> */
+@utility ripple {
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 9999px;
+    background: var(--ripple-color, var(--color-primary-300));
+    opacity: 0;
+    transform: scale(2.5);
+    pointer-events: none;
+    transition: transform 1.5s ease-out, opacity 0.75s ease-out;
+  }
+
+  &:active::after {
+    transform: scale(0);
+    opacity: 0.6;
+    transition: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
