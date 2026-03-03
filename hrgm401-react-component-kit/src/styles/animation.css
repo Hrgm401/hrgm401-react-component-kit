@@ -127,6 +127,13 @@
     opacity: 0.6;
     transition: none;
   }
+
+  /* JS から付与するクラス（:active と同じ）*/
+  &.ripple-trigger::after {
+    transform: scale(0);
+    opacity: 0.6;
+    transition: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
