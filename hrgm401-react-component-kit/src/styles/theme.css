@@ -55,13 +55,13 @@
     /* 基本カラー */
     --color-primary: var(--color-primary-600);
     --color-primary-hover: var(--color-primary-700);
-    
+
     --color-secondary: var(--color-secondary-600);
     --color-secondary-hover: var(--color-secondary-700);
-    
+
     --color-tertiary: var(--color-tertiary-600);
     --color-tertiary-hover: var(--color-tertiary-700);
-    
+
     --color-quaternary: var(--color-quaternary-600);
     --color-quaternary-hover: var(--color-quaternary-700);
 
@@ -92,6 +92,8 @@
     --radius-lg: 8px;
     --radius-xl: 10px;
 }
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 /* ダーク */
 :root.dark,

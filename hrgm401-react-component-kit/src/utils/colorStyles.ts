@@ -1,5 +1,5 @@
 /** テーマカラー */
-type ColorType = "primary" | "secondary" | "tertiary" | "quaternary";
+export type ColorType = "primary" | "secondary" | "tertiary" | "quaternary";
 
 /**
  * 入力フォーム（Input/ Textarea）のスタイル
@@ -28,4 +28,12 @@ export const rippleColorStyles = (color: ColorType) =>
         secondary: "var(--color-secondary-300)",
         tertiary: "var(--color-tertiary-300)",
         quaternary: "var(--color-quaternary-300)",
+    })[color];
+
+export const ringColorStyle = (color: ColorType) =>
+    ({
+        primary: "focus-visible:ring-primary-400",
+        secondary: "focus-visible:ring-secondary-400",
+        tertiary: "focus-visible:ring-tertiary-400",
+        quaternary: "focus-visible:ring-quaternary-400",
     })[color];

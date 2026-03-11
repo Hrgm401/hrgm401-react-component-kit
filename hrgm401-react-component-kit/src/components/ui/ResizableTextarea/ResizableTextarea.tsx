@@ -1,12 +1,12 @@
 import { Maximize2, Minimize2 } from "lucide-react";
-import { forwardRef, useRef, type CSSProperties } from "react";
+import { forwardRef, useRef, type ComponentProps, type CSSProperties } from "react";
 import { useResizableTextarea } from "../../../hooks/useResizableTextarea";
 import { cn } from "../../../utils/cn";
 import { triggerRipple } from "../../../utils/triggerRipple";
-import { buttonColorStyles, inputColorStyles, rippleColorStyles } from "../../../utils/colorStyles";
-type Props = Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, "style" | "rows"> & {
+import { ringColorStyle, inputColorStyles, rippleColorStyles, type ColorType } from "../../../utils/colorStyles";
+type Props = Omit<ComponentProps<"textarea">, "style" | "rows"> & {
     /**カラーバリエーション default: primary */
-    color?: "primary" | "secondary" | "tertiary" | "quaternary";
+    color?: ColorType;
 };
 
 /**
@@ -69,7 +69,7 @@ export const ResizableTextarea = forwardRef<HTMLTextAreaElement, Props>(
                         }}
                         className={cn(
                             "absolute top-2 right-4 p-2 rounded-full",
-                            `focus-visible:ring-1 ${buttonColorStyles(color ?? "primary")} focus-visible:outline-none focus-visible:bg-bg-muted`,
+                            `focus-visible:ring-1 ${ringColorStyle(color ?? "primary")} focus-visible:outline-none focus-visible:bg-bg-muted`,
                             "transition-colors duration-300 ripple",
                             "text-text-muted",
                             "hover:bg-bg-muted",

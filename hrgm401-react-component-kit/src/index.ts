@@ -10,7 +10,7 @@ export * from "./components/NomalTable";
 export * from "./components/ScrollableList";
 export * from "./components/SelectBox";
 export * from "./components/SelectButton";
-export * from "./components/Sidebar";
+export * from "./components/domain/Sidebar/Sidebar";
 export * from "./components/TabButton";
 export * from "./components/TabWithLine";
 export * from "./hooks/useInferOptions";
