@@ -43,8 +43,7 @@ const meta = {
         },
         className: {
             control: "text",
-            description:
-                "追加のTailwindクラス。既存スタイルと競合する場合は上書きされる",
+            description: "追加のTailwindクラス。既存スタイルと競合する場合は上書きされる",
         },
     },
 } satisfies Meta<typeof ResizableTextarea>;
@@ -56,7 +55,10 @@ type Story = StoryObj<typeof ResizableTextarea>;
 // 基本
 // ============================================
 
-/** デフォルトの状態。空のテキストエリアが表示される */
+/**
+ * #### デフォルト
+ * デフォルトの状態。空のテキストエリアが表示される
+ *  */
 export const Default: Story = {
     args: {
         placeholder: "テキストを入力...",
@@ -69,11 +71,11 @@ export const Default: Story = {
 // ============================================
 
 /**
+ * #### コメント入力
  * コメント入力欄としての使用例。
  * `value` と `onChange` を使って制御コンポーネントとして動作する
  */
 export const CommentInput: Story = {
-    name: "コメント入力",
     parameters: {
         docs: {
             description: {
@@ -87,9 +89,7 @@ export const CommentInput: Story = {
 
         return (
             <div className="w-125 space-y-2">
-                <label className="text-sm font-medium text-text">
-                    コメント
-                </label>
+                <label className="text-sm font-medium text-text">コメント</label>
                 <ResizableTextarea
                     value={value}
                     onChange={(e) => setValue(e.target.value)}
@@ -105,10 +105,10 @@ export const CommentInput: Story = {
 };
 
 /**
+ * #### 長文入力
  * 長文が入力された状態。展開/縮小ボタンが表示される
  */
 export const LongText: Story = {
-    name: "長文入力時（展開ボタン表示）",
     parameters: {
         docs: {
             description: {
@@ -119,7 +119,7 @@ export const LongText: Story = {
     render: () => {
         const longText = Array(20)
             .fill(
-                "これは長文テストです。テキストエリアの高さが自動調整され、展開ボタンが表示されることを確認できます。"
+                "これは長文テストです。テキストエリアの高さが自動調整され、展開ボタンが表示されることを確認できます。",
             )
             .join("\n");
 
@@ -127,10 +127,7 @@ export const LongText: Story = {
 
         return (
             <div className="w-125">
-                <ResizableTextarea
-                    value={value}
-                    onChange={(e) => setValue(e.target.value)}
-                />
+                <ResizableTextarea value={value} onChange={(e) => setValue(e.target.value)} />
             </div>
         );
     },
@@ -141,15 +138,16 @@ export const LongText: Story = {
 // ============================================
 
 /**
+ * #### カラーバリエーション
  * `color` prop で フォーカス時のカラーを切り替える例。
  * 4色を並べて比較できる
  */
 export const ColorVariants: Story = {
-    name: "カラーバリエーション",
     parameters: {
         docs: {
             description: {
-                story: "`color` prop でフォーカス時のリングカラーを変更できる。\n\n" +
+                story:
+                    "`color` prop でフォーカス時のリングカラーを変更できる。\n\n" +
                     "| color | 説明 |\n" +
                     "|-------|------|\n" +
                     "| `primary` | 青系（デフォルト） |\n" +
@@ -161,17 +159,19 @@ export const ColorVariants: Story = {
     },
     render: () => {
         const colors = ["primary", "secondary", "tertiary", "quaternary"] as const;
-        const labels = { primary: "Primary（青）", secondary: "Secondary（緑）", tertiary: "Tertiary（赤）", quaternary: "Quaternary（黄）" };
+        const labels = {
+            primary: "Primary（青）",
+            secondary: "Secondary（緑）",
+            tertiary: "Tertiary（赤）",
+            quaternary: "Quaternary（黄）",
+        };
 
         return (
             <div className="w-125 space-y-4">
                 {colors.map((color) => (
                     <div key={color} className="space-y-1">
                         <p className="text-xs text-text-muted">{labels[color]}</p>
-                        <ResizableTextarea
-                            color={color}
-                            placeholder={`color="${color}" — フォーカスして確認`}
-                        />
+                        <ResizableTextarea color={color} placeholder={`color="${color}" — フォーカスして確認`} />
                     </div>
                 ))}
             </div>
@@ -183,9 +183,11 @@ export const ColorVariants: Story = {
 // 状態バリエーション
 // ============================================
 
-/** `disabled` を指定した場合。入力が無効化される */
+/**
+ * #### 無効状態
+ * `disabled` を指定した場合。入力が無効化される
+ *  */
 export const Disabled: Story = {
-    name: "無効状態",
     args: {
         disabled: true,
         value: "この入力欄は無効化されています",
@@ -193,9 +195,11 @@ export const Disabled: Story = {
     },
 };
 
-/** `readOnly` を指定した場合。内容は表示されるが編集できない */
+/**
+ * #### 読み取り専用
+ * `readOnly` を指定した場合。内容は表示されるが編集できない
+ *  */
 export const ReadOnly: Story = {
-    name: "読み取り専用",
     args: {
         readOnly: true,
         value: "この内容は読み取り専用です。選択やコピーは可能ですが、編集はできません。",
@@ -207,15 +211,16 @@ export const ReadOnly: Story = {
 // ============================================
 
 /**
+ * #### スタイル上書き（className）
  * `className` を使ってスタイルを上書きする例。
  * tailwind-merge により、競合するクラスは安全に置き換えられる
  */
 export const CustomStyle: Story = {
-    name: "スタイル上書き（className）",
     parameters: {
         docs: {
             description: {
-                story: "`className` でコンポーネントのデフォルトスタイルを上書きできる。\n\n" +
+                story:
+                    "`className` でコンポーネントのデフォルトスタイルを上書きできる。\n\n" +
                     "```tsx\n" +
                     '<ResizableTextarea className="bg-primary-50 border-primary-300 rounded-none" />\n' +
                     "```\n\n" +
@@ -229,9 +234,7 @@ export const CustomStyle: Story = {
         return (
             <div className="w-125 space-y-4">
                 <div>
-                    <p className="text-xs text-text-muted mb-1">
-                        背景色・ボーダー色を変更
-                    </p>
+                    <p className="text-xs text-text-muted mb-1">背景色・ボーダー色を変更</p>
                     <ResizableTextarea
                         value={value}
                         onChange={(e) => setValue(e.target.value)}
@@ -240,9 +243,7 @@ export const CustomStyle: Story = {
                     />
                 </div>
                 <div>
-                    <p className="text-xs text-text-muted mb-1">
-                        角丸なし
-                    </p>
+                    <p className="text-xs text-text-muted mb-1">角丸なし</p>
                     <ResizableTextarea
                         value={value}
                         onChange={(e) => setValue(e.target.value)}
@@ -260,10 +261,10 @@ export const CustomStyle: Story = {
 // ============================================
 
 /**
+ * #### フォーム内での複数配置
  * フォーム内で複数の ResizableTextarea を使う例
  */
 export const MultipleInForm: Story = {
-    name: "フォーム内での複数配置",
     parameters: {
         docs: {
             description: {
@@ -276,14 +277,9 @@ export const MultipleInForm: Story = {
         const [body, setBody] = useState("");
 
         return (
-            <form
-                className="w-125 space-y-4"
-                onSubmit={(e) => e.preventDefault()}
-            >
+            <form className="w-125 space-y-4" onSubmit={(e) => e.preventDefault()}>
                 <div className="space-y-1">
-                    <label className="text-sm font-medium text-text">
-                        件名
-                    </label>
+                    <label className="text-sm font-medium text-text">件名</label>
                     <ResizableTextarea
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
@@ -292,9 +288,7 @@ export const MultipleInForm: Story = {
                     />
                 </div>
                 <div className="space-y-1">
-                    <label className="text-sm font-medium text-text">
-                        本文
-                    </label>
+                    <label className="text-sm font-medium text-text">本文</label>
                     <ResizableTextarea
                         value={body}
                         onChange={(e) => setBody(e.target.value)}
