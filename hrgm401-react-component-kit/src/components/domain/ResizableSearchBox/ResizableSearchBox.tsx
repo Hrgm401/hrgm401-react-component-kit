@@ -1,10 +1,8 @@
 import { Send } from "lucide-react";
 import { forwardRef, useState, useRef } from "react";
-import type { CSSProperties } from "react";
-import { cn } from "../../../utils/cn";
 import { ResizableTextarea } from "../../ui/ResizableTextarea/ResizableTextarea";
 import { triggerRipple } from "../../../utils/triggerRipple";
-import { buttonColorStyles, rippleColorStyles } from "../../../utils/colorStyles";
+import { AccessoryButton } from "../../ui/AccessoryButton/AccessoryButton";
 
 type Props = React.ComponentProps<typeof ResizableTextarea> & {
     /**
@@ -83,28 +81,15 @@ export const ResizableSearchBox = forwardRef<HTMLTextAreaElement, Props>(
                     onChange={handleChange}
                     onKeyDown={handleKeyDown}
                 />
-                <button
+                <AccessoryButton
                     ref={buttonRef}
-                    type="button"
                     aria-label={submitLabel ?? "送信"}
-                    onClick={handleSearch}
-                    onKeyDown={(e) => {
-                        if (e.key === "Enter" || e.key === " ") {
-                            triggerRipple(buttonRef.current);
-                        }
-                    }}
+                    icon={Send}
+                    color={rest.color}
                     disabled={rest.disabled}
-                    className={cn(
-                        "absolute bottom-3 right-4 p-2 rounded-full",
-                        `focus-visible:outline-none focus-visible:ring-1 ${buttonColorStyles(rest.color ?? "primary")}`,
-                        "ripple text-text-muted bg-bg-muted",
-                        "transition-colors duration-150",
-                        rest.disabled && "opacity-40 cursor-not-allowed pointer-events-none",
-                    )}
-                    style={{ "--ripple-color": rippleColorStyles(rest.color ?? "primary") } as CSSProperties}
-                >
-                    <Send className="w-4 h-4" />
-                </button>
+                    onClick={handleSearch}
+                    className="absolute bottom-3 right-4"
+                />
             </div>
         );
     },

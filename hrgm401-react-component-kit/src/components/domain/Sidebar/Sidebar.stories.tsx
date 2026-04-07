@@ -48,7 +48,7 @@ const meta = {
 
             return (
                 <div
-                    className={`flex h-screen w-full transition-colors duration-300 ${isDarkMode ? "bg-slate-950" : "bg-slate-50"}`}
+                    className={`flex h-screen w-full transition-colors duration-300 ${isDarkMode ? "bg-slate-950" : "bg-white"}`}
                 >
                     <Story />
                 </div>
@@ -70,7 +70,7 @@ export const Default: Story = {
         return (
             <div className="w-80 h-dvh">
                 {/* Sidebar自体の背景色もダークモードに対応させる */}
-                <Sidebar {...args} className="bg-surface dark:bg-surface-dark">
+                <Sidebar {...args} className="bg-bg-muted dark:bg-surface-dark">
                     <div className="w-72">
                         <div className="flex-grow overflow-y-auto mb-4">
                             <p className="text-2xl font-bold text-sky-600 dark:text-sky-400 pl-8 pt-4">
@@ -113,9 +113,11 @@ export const ResizableIntegration: Story = {
                         minSize={4}
                         className={!isDragging ? "transition-all duration-300 ease-in-out" : ""}
                     >
-                        <Sidebar {...args} onOpenChange={handleToggle} className="bg-surface dark:bg-surface-dark">
+                        <Sidebar {...args} onOpenChange={handleToggle} className="bg-primary-50 dark:bg-surface-dark">
                             <div className="p-4 w-64">
-                                <h2 className="font-bold text-sky-600 dark:text-sky-400 mb-2">パネル連動モード</h2>
+                                <h2 className="font-bold text-primary-600 dark:text-primary-400 mb-2">
+                                    パネル連動モード
+                                </h2>
                                 <p className="text-sm text-slate-600 dark:text-slate-400">
                                     境界線をドラッグしても、ボタンで開閉しても動作します。
                                     <br />
@@ -131,7 +133,7 @@ export const ResizableIntegration: Story = {
                     </Panel>
 
                     <PanelResizeHandle
-                        className="w-[2px] bg-slate-300 dark:bg-slate-700 hover:w-[4px] hover:bg-sky-400 dark:hover:bg-sky-500 transition-all cursor-col-resize z-10"
+                        className="w-[2px] bg-slate-300 dark:bg-slate-700 hover:w-[4px] hover:bg-primary-400 dark:hover:bg-primary-500 transition-all cursor-col-resize z-10"
                         onDragging={(active) => setIsDragging(active)}
                     />
 
@@ -169,12 +171,12 @@ export const WithContentsTemplate: Story = {
                         </div>
                         {/* 内部パネルのダークモード対応 */}
                         <div className="bg-white dark:bg-slate-800 mx-3 rounded-xl shadow-sm p-4 flex flex-col gap-2 transition-colors">
-                            {/* <div className="w-full">
+                            <div className="w-full">
                                 <label className="text-xs ps-2 font-bold text-slate-500 dark:text-slate-400">
                                     言語
                                 </label>
                                 <SelectBox
-                                    options={langOptions.map((o) => ({ label: o, value: o }))}
+                                    options={langOptions}
                                     value={selectedlang}
                                     onChange={(v) => setSelectedLang(v)}
                                 />
@@ -183,12 +185,8 @@ export const WithContentsTemplate: Story = {
                                 <label className="text-xs ps-2 font-bold text-slate-500 dark:text-slate-400">
                                     フレームワーク
                                 </label>
-                                <SelectBox
-                                    options={fwOptions.map((o) => ({ label: o, value: o }))}
-                                    value={selectedfm}
-                                    onChange={(v) => setSelectedFm(v)}
-                                />
-                            </div> */}
+                                <SelectBox options={fwOptions} value={selectedfm} onChange={(v) => setSelectedFm(v)} />
+                            </div>
                         </div>
                         <div className="bg-white dark:bg-slate-800 mx-3 mt-3 rounded-xl shadow-sm p-4 flex flex-col gap-2 transition-colors">
                             <div className="w-full">

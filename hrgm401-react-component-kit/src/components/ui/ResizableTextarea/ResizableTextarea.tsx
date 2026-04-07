@@ -1,9 +1,9 @@
 import { Maximize2, Minimize2 } from "lucide-react";
-import { forwardRef, useRef, type ComponentProps, type CSSProperties } from "react";
+import { forwardRef, useRef, type ComponentProps } from "react";
 import { useResizableTextarea } from "../../../hooks/useResizableTextarea";
 import { cn } from "../../../utils/cn";
-import { triggerRipple } from "../../../utils/triggerRipple";
-import { ringColorStyle, inputColorStyles, rippleColorStyles, type ColorType } from "../../../utils/colorStyles";
+import { inputColorStyles, type ColorType } from "../../../utils/colorStyles";
+import { SubtleAccessoryButton } from "../SubtleAccessoryButton/SubtleAccessoryButton";
 type Props = Omit<ComponentProps<"textarea">, "style" | "rows"> & {
     /**カラーバリエーション default: primary */
     color?: ColorType;
@@ -59,26 +59,14 @@ export const ResizableTextarea = forwardRef<HTMLTextAreaElement, Props>(
                     )}
                 />
                 {expandBoxSize && (
-                    <button
+                    <SubtleAccessoryButton
                         ref={expandBtnRef}
                         aria-label="テキストエリアの拡張と収縮を行うボタン"
-                        onKeyDown={(e) => {
-                            if (e.key === "Enter" || e.key === " ") {
-                                triggerRipple(expandBtnRef.current);
-                            }
-                        }}
-                        className={cn(
-                            "absolute top-2 right-4 p-2 rounded-full",
-                            `focus-visible:ring-1 ${ringColorStyle(color ?? "primary")} focus-visible:outline-none focus-visible:bg-bg-muted`,
-                            "transition-colors duration-300 ripple",
-                            "text-text-muted",
-                            "hover:bg-bg-muted",
-                        )}
+                        icon={isExpanded ? Minimize2 : Maximize2}
+                        color={color}
+                        className="absolute top-2 right-4"
                         onClick={toggleExpand}
-                        style={{ "--ripple-color": rippleColorStyles(color ?? "primary") } as CSSProperties}
-                    >
-                        {isExpanded ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
-                    </button>
+                    />
                 )}
             </div>
         );
