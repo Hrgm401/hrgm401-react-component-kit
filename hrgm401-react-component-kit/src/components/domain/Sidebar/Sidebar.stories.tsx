@@ -162,8 +162,8 @@ export const WithContentsTemplate: Story = {
 
         return (
             <div className="w-80 relative h-dvh">
-                <Sidebar {...args} className="bg-slate-50 dark:bg-slate-900/50">
-                    <div className="flex flex-col w-full h-full">
+                <Sidebar {...args} className="bg-slate-50 dark:bg-slate-900/50 relative ">
+                    <div className="flex flex-col w-full">
                         <div className="flex justify-end p-4">
                             <button className="py-2 px-6 bg-sky-500 dark:bg-sky-600 rounded-full text-white text-sm font-bold hover:bg-sky-400 dark:hover:bg-sky-500 w-20 transition-colors">
                                 決定

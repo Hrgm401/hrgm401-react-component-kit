@@ -14,7 +14,7 @@ export const inputColorStyles = (color: ColorType) =>
         quaternary: "hover:border-quaternary-400 focus:border-quaternary-500 focus:ring-2 focus:ring-quaternary-500/20",
     })[color];
 
-export const buttonColorStyles = (color: ColorType) =>
+export const accessoryButtonColorStyles = (color: ColorType) =>
     ({
         primary: "hover:bg-primary-100 focus-visible:ring-primary-400 focus-visible:bg-primary-50",
         secondary: "hover:bg-secondary-100 focus-visible:ring-secondary-400 focus-visible:bg-secondary-50",
@@ -22,12 +22,28 @@ export const buttonColorStyles = (color: ColorType) =>
         quaternary: "hover:bg-quaternary-100 focus-visible:ring-quaternary-400 focus-visible:bg-quaternary-50",
     })[color];
 
-export const rippleColorStyles = (color: ColorType) =>
+export const ripplePaleColorStyles = (color: ColorType) =>
     ({
         primary: "var(--color-primary-300)",
         secondary: "var(--color-secondary-300)",
         tertiary: "var(--color-tertiary-300)",
         quaternary: "var(--color-quaternary-300)",
+    })[color];
+
+export const buttonColorStyles = (color: ColorType) =>
+    ({
+        primary: "bg-primary-500 hover:bg-primary-600 focus-visible:ring-primary-600",
+        secondary: "bg-secondary-500 hover:bg-secondary-600 focus-visible:ring-secondary-600",
+        tertiary: "bg-tertiary-500 hover:bg-tertiary-600 focus-visible:ring-tertiary-600",
+        quaternary: "bg-quaternary-500 hover:bg-quaternary-600 focus-visible:ring-quaternary-600",
+    })[color];
+
+export const rippleColorStyles = (color: ColorType) =>
+    ({
+        primary: "var(--color-primary-700)",
+        secondary: "var(--color-secondary-700)",
+        tertiary: "var(--color-tertiary-700)",
+        quaternary: "var(--color-quaternary-700)",
     })[color];
 
 export const ringColorStyle = (color: ColorType) =>

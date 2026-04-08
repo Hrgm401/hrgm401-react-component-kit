@@ -1,7 +1,7 @@
 import { useState, useRef, type ComponentProps } from "react";
 import { PanelLeft } from "lucide-react";
 import { TooltipPortal } from "../../TooltipPortal";
-import { ringColorStyle, rippleColorStyles, type ColorType } from "../../../utils/colorStyles";
+import { ringColorStyle, ripplePaleColorStyles, type ColorType } from "../../../utils/colorStyles";
 import { cn } from "../../../utils/cn";
 import { triggerRipple } from "../../../utils/triggerRipple";
 
@@ -31,7 +31,7 @@ export const Sidebar = ({
     };
 
     const styles = {
-        "--ripple-color": rippleColorStyles(themeColor),
+        "--ripple-color": ripplePaleColorStyles(themeColor),
         ...style,
     };
 

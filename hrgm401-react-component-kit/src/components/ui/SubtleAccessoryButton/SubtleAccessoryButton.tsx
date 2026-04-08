@@ -3,7 +3,7 @@ import type { ComponentProps, CSSProperties } from "react";
 import { type LucideIcon } from "lucide-react";
 import { cn } from "../../../utils/cn";
 import { triggerRipple } from "../../../utils/triggerRipple";
-import { ringColorStyle, rippleColorStyles, type ColorType } from "../../../utils/colorStyles";
+import { ringColorStyle, ripplePaleColorStyles, type ColorType } from "../../../utils/colorStyles";
 
 type Props = Omit<ComponentProps<"button">, "color"> & {
     /** 描画するLucideアイコンコンポーネント */
@@ -44,7 +44,7 @@ export const SubtleAccessoryButton = forwardRef<HTMLButtonElement, Props>(
                 style={
                     {
                         ...rest.style,
-                        "--ripple-color": rippleColorStyles(color),
+                        "--ripple-color": ripplePaleColorStyles(color),
                     } as CSSProperties
                 }
             >

@@ -3,7 +3,7 @@ import type { ComponentProps, CSSProperties } from "react";
 import { type LucideIcon } from "lucide-react";
 import { cn } from "../../../utils/cn";
 import { triggerRipple } from "../../../utils/triggerRipple";
-import { buttonColorStyles, rippleColorStyles, type ColorType } from "../../../utils/colorStyles";
+import { accessoryButtonColorStyles, ripplePaleColorStyles, type ColorType } from "../../../utils/colorStyles";
 
 type Props = Omit<ComponentProps<"button">, "color"> & {
     /** 描画するLucideアイコンコンポーネント */
@@ -34,7 +34,7 @@ export const AccessoryButton = forwardRef<HTMLButtonElement, Props>(
                 }}
                 className={cn(
                     "p-2 rounded-full",
-                    `focus-visible:outline-none focus-visible:ring-1 ${buttonColorStyles(color)}`,
+                    `focus-visible:outline-none focus-visible:ring-1 ${accessoryButtonColorStyles(color)}`,
                     "ripple text-text-muted bg-bg-muted",
                     "transition-colors duration-150",
                     "disabled:opacity-40 disabled:cursor-not-allowed disabled:pointer-events-none",
@@ -43,7 +43,7 @@ export const AccessoryButton = forwardRef<HTMLButtonElement, Props>(
                 style={
                     {
                         ...rest.style,
-                        "--ripple-color": rippleColorStyles(color),
+                        "--ripple-color": ripplePaleColorStyles(color),
                     } as CSSProperties
                 }
             >

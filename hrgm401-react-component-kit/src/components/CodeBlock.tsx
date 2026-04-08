@@ -6,6 +6,8 @@ import { forwardRef, useState, type ComponentProps } from "react";
 import Editor, { type Monaco } from "@monaco-editor/react";
 import { cn } from "../utils/cn";
 import { setupMonacoEnvironment } from "../utils/monaco-theme";
+import { Button } from "./ui/Button/Button";
+import type { ColorType } from "../utils/colorStyles";
 
 const LANG_MAP: Record<string, string> = {
     js: "javascript",
@@ -44,10 +46,24 @@ type Props = Omit<ComponentProps<"div">, "onChange"> & {
     onChange: (newCode: string) => void;
     isDarkMode?: boolean;
     readonly?: boolean;
+    color?: string;
 };
 
 export const CodeBlock = forwardRef<HTMLDivElement, Props>(
-    ({ title, code, lang, onChange, isDarkMode = true, readonly = false, className, ...rest }: Props, ref) => {
+    (
+        {
+            title,
+            code,
+            lang,
+            onChange,
+            isDarkMode = true,
+            color = "primary",
+            readonly = false,
+            className,
+            ...rest
+        }: Props,
+        ref,
+    ) => {
         const [copied, setCopied] = useState(false);
 
         const monacoLang = lang && LANG_MAP[lang] ? LANG_MAP[lang] : lang || "plaintext";
@@ -83,13 +99,14 @@ export const CodeBlock = forwardRef<HTMLDivElement, Props>(
                     className={`flex justify-between items-center px-4 py-2 border-b shrink-0 ${isDarkMode ? "border-gray-700" : "border-gray-200"}`}
                 >
                     <p className={`text-sm ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}>{title}</p>
-                    <button
+                    <Button
                         onClick={handleCopy}
-                        className="bg-sky-600 hover:bg-sky-700 disabled:bg-gray-500 text-white text-xs font-bold py-1 px-3 rounded-md transition-colors"
                         disabled={!code}
+                        className="py-1 px-3 text-xs"
+                        color={color as ColorType}
                     >
                         {copied ? "Copied!" : "Copy"}
-                    </button>
+                    </Button>
                 </div>
                 <div className="flex-1 w-full min-h-0 relative">
                     <Editor
