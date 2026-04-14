@@ -1,4 +1,5 @@
 import { useRef, useState, useCallback } from "react";
+import { useMergeRefs } from "./useMergeRefs";
 
 type Options = {
     /** 影を表示する高さの閾値（px） default: 80 */
@@ -31,19 +32,7 @@ export const useResizableTextarea = (
     const [hasShadow, setHasShadow] = useState(false);
 
     /** 内部refと外部refの結合 */
-    const setRef = useCallback(
-        (el: HTMLTextAreaElement | null) => {
-            // 内部ref更新
-            internalRef.current = el;
-
-            if (typeof externalRef === "function") {
-                externalRef(el);
-            } else if (externalRef) {
-                externalRef.current = el;
-            }
-        },
-        [externalRef],
-    );
+    const setRef = useMergeRefs(internalRef, externalRef);
 
     const adjustHeight = useCallback(() => {
         const el = internalRef.current;

@@ -1,6 +1,6 @@
 import "./index.css";
 export * from "./components/ui/ResizableTextarea/ResizableTextarea";
-export * from "./components/CodeBlock";
+export * from "./components/ui/CodeBlock/CodeBlock";
 export * from "./components/DragFileSpace";
 export * from "./components/EditableTable";
 export * from "./components/ExplanatorySidebar";
@@ -11,7 +11,7 @@ export * from "./components/ScrollableList";
 export * from "./components/SelectBox";
 export * from "./components/SelectButton";
 export * from "./components/domain/Sidebar/Sidebar";
-export * from "./components/TabButton";
-export * from "./components/TabWithLine";
+export * from "./components/ui/Tabs/TabButton";
+export * from "./components/ui/Tabs/Tabs";
 export * from "./hooks/useInferOptions";
 export * from "./types/Option";

@@ -4,10 +4,10 @@
  */
 import { forwardRef, useState, type ComponentProps } from "react";
 import Editor, { type Monaco } from "@monaco-editor/react";
-import { cn } from "../utils/cn";
-import { setupMonacoEnvironment } from "../utils/monaco-theme";
-import { Button } from "./ui/Button/Button";
-import type { ColorType } from "../utils/colorStyles";
+import { cn } from "../../../utils/cn";
+import { setupMonacoEnvironment } from "../../../utils/monaco-theme";
+import { Button } from "../Button/Button";
+import type { ColorType } from "../../../utils/colorStyles";
 
 const LANG_MAP: Record<string, string> = {
     js: "javascript",

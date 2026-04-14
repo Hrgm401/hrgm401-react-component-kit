@@ -15,7 +15,7 @@ const meta = {
     // Storybook上で高さを確保するためのラッパー（デコレーター）を設定
     decorators: [
         (Story) => (
-            <div className="h-[500px] w-full min-w-[600px] resize-y overflow-hidden border border-dashed border-gray-300 p-4">
+            <div className="h-[500px] w-full min-w-[600px] resize-y overflow-hidden">
                 <Story />
             </div>
         ),
