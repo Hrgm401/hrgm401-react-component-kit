@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: hrgm401-react-component-kit # run: のコマンドはこのフォルダで実行
+    steps:
+      - uses: action/checkout@v4 # リポジトリを取得
+
+      - uses: jdx/mise-action@v2 # mise.toml を読んで node / pnpm を入れる
+        with:
+          working_directory: hrgm401-react-component-kit
+
+      - run: pnpm install --frozen-lockfile # lockfile と食い違ったら失敗させる
+      - run: pnpm list
+      - run pnpm build

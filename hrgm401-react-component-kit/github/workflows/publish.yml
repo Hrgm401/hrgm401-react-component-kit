@@ -1,0 +1,25 @@
+name: Publish
+
+on:
+  release:
+    types: [publishsed] # GitHub で Release を公開したときに動く
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write # GitHub Packages への書き込みを許可
+    defaults:
+      run:
+        workinig-directory: hrgm401-react-component-kit
+      env:
+        NODE_AUTH_TOKEN: ${{ secret.GITHUB_TOKEN }} # .npmrc の ${NODE_AUTH_TOKEN} に入る
+      steps:
+        - uses: actions/checkout@v4
+        - uses: jdx/mise-action@v2
+          with:
+            working_directory: hrgm401-react-component-kit
+        - run: pnpm install --frozen-lockfile
+        - run: pnpm build
+        - run: pnpm publish --no-git-checks # Release 時はブランチ外なので git チェックを外す
